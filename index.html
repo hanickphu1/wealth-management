@@ -243,7 +243,7 @@
         display: block;
         font-style: italic;
         font-weight: 600;
-        animation: sheen 4s linear infinite;
+        animation: shimmerGold 8s linear infinite;
       }
 
       .tagline-subtitle {
@@ -1105,16 +1105,18 @@
       .detail-feature-card {
         /* Sử dụng gradient tuyến tính từ trên xuống dưới để tạo chiều sâu */
         background: linear-gradient(
-          to bottom,
-          #1a2c4e 0%,
-          /* Màu xanh đậm ở phía trên, gần hình ảnh */ var(--midnight) 100%,
-          /* Chuyển sang màu midnight ở phần giữa */ #0d1c2a 50%
-            /* Màu xanh đen sâu nhất ở phía dưới, phần nội dung */
+          160deg,
+          #1b2d47 0%,
+          #0f1f35 35%,
+          #0a1625 70%,
+          #06101a 100%
         );
-        border-radius: 24px;
+        border-radius: 20px;
         overflow: hidden;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ để tăng chiều sâu */
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        will-change: transform;
       }
 
       .detail-feature-card:hover {
@@ -1147,11 +1149,11 @@
       .detail-feature-content {
         padding: 36px;
         background: linear-gradient(
-          to bottom,
-          #1a2c4e 0%,
-          /* Màu xanh đậm ở phía trên, gần hình ảnh */ var(--midnight) 100%,
-          /* Chuyển sang màu midnight ở phần giữa */ #0d1c2a 50%
-            /* Màu xanh đen sâu nhất ở phía dưới, phần nội dung */
+          160deg,
+          #1b2d47 0%,
+          #0f1f35 35%,
+          #0a1625 70%,
+          #06101a 100%
         );
       }
 
@@ -1185,10 +1187,10 @@
 
       @keyframes shimmerGold {
         0% {
-          background-position: -100% 0;
+          background-position: 0% center;
         }
         100% {
-          background-position: 200% 0;
+          background-position: 200% center;
         }
       }
 
