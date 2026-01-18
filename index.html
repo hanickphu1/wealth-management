@@ -1,1138 +1,1844 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wealth Management | Private Banking</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        :root {
-            --gold: #B8965C;
-            --gold-light: #CBAB74;
-            --gold-dark: #9A7B4A;
-            --navy: #1A2B4A;
-            --navy-light: #2A3B5A;
-            --navy-dark: #0F1A2E;
-            --cream: #F5F3EE;
-            --cream-dark: #E8E4DB;
-            --cream-light: #FAF9F6;
-            --text-primary: #2C3E50;
-            --text-secondary: #5D6D7E;
-            --text-light: #95A5A6;
-            --white: #FFFFFF;
-            --card-bg: #FDFCFA;
-        }
+      :root {
+        --gold: #b8965c;
+        --gold-light: #cbab74;
+        --gold-dark: #9a7b4a;
+        --navy: #1a2b4a;
+        --navy-light: #2a3b5a;
+        --navy-dark: #0f1a2e;
+        --cream: #f5f3ee;
+        --cream-dark: #e8e4db;
+        --cream-light: #faf9f6;
+        --text-primary: #2c3e50;
+        --text-secondary: #5d6d7e;
+        --text-light: #95a5a6;
+        --white: #ffffff;
+        --card-bg: #fdfcfa;
+      }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Be Vietnam Pro', sans-serif;
-            background: #000;
-            color: var(--text-primary);
-            line-height: 1.8;
-            font-weight: 400;
-            overflow-x: hidden;
-            font-size: 15px;
-        }
+      body {
+        font-family: "Be Vietnam Pro", sans-serif;
+        background: #000;
+        color: var(--text-primary);
+        line-height: 1.8;
+        font-weight: 400;
+        overflow-x: hidden;
+        font-size: 15px;
+      }
 
-        .page {
-            min-height: 100vh;
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .page.active { opacity: 1; }
-        .page.hidden { display: none; }
+      .page {
+        min-height: 100vh;
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .page.active {
+        opacity: 1;
+      }
+      .page.hidden {
+        display: none;
+      }
 
-        /* ==================== TAGLINE PAGE ==================== */
-        #tagline-page {
-            background: #000;
-            position: relative;
-            min-height: 100vh;
-        }
+      /* ==================== TAGLINE PAGE ==================== */
+      #tagline-page {
+        background: #000;
+        position: relative;
+        min-height: 100vh;
+      }
 
-        .hero-background {
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse at 30% 20%, rgba(184, 150, 92, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(184, 150, 92, 0.05) 0%, transparent 50%),
-                linear-gradient(180deg, #0a0a0a 0%, #000 100%);
-        }
+      .hero-background {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse at 30% 20%,
+            rgba(184, 150, 92, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 70% 80%,
+            rgba(184, 150, 92, 0.05) 0%,
+            transparent 50%
+          ),
+          linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+      }
 
-        .tagline-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 50px 40px;
-            position: relative;
-            z-index: 10;
-        }
+      .tagline-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 50px 40px;
+        position: relative;
+        z-index: 10;
+      }
 
-        .tagline-header { text-align: center; margin-bottom: 60px; }
+      .tagline-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
 
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 35px;
-        }
+      .brand-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 35px;
+      }
 
-        .brand-line {
-            width: 50px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
+      .brand-line {
+        width: 50px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
 
-        .brand-text {
-            color: var(--gold);
-            font-size: 11px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
+      .brand-text {
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
 
-        .tagline-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(32px, 4.5vw, 52px);
-            font-weight: 400;
-            color: var(--white);
-            margin-bottom: 16px;
-            line-height: 1.25;
-        }
+      .tagline-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(32px, 4.5vw, 52px);
+        font-weight: 400;
+        color: var(--white);
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
 
-        .tagline-title span {
-            color: var(--gold);
-            display: block;
-            font-style: italic;
-        }
+      .tagline-title span {
+        color: var(--gold);
+        display: block;
+        font-style: italic;
+      }
 
-        .tagline-subtitle {
-            color: rgba(255,255,255,0.55);
-            font-size: 15px;
-            font-weight: 300;
-            max-width: 550px;
-            margin: 0 auto;
-        }
+      .tagline-subtitle {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 15px;
+        font-weight: 300;
+        max-width: 550px;
+        margin: 0 auto;
+      }
 
+      .tagline-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto 50px;
+      }
+
+      @media (max-width: 900px) {
         .tagline-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto 50px;
+          grid-template-columns: 1fr;
         }
+      }
 
-        @media (max-width: 900px) {
-            .tagline-grid { grid-template-columns: 1fr; }
+      .tagline-card {
+        position: relative;
+        height: 300px;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.4s ease;
+      }
+
+      .tagline-card:hover {
+        border-color: rgba(184, 150, 92, 0.4);
+      }
+      .tagline-card.selected {
+        border-color: var(--gold);
+        border-width: 2px;
+      }
+
+      .card-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.7s ease;
+      }
+
+      .tagline-card:hover .card-bg {
+        transform: scale(1.06);
+      }
+
+      .tagline-card[data-tagline="1"] .card-bg {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+          ),
+          url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80")
+            center/cover;
+      }
+      .tagline-card[data-tagline="2"] .card-bg {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0.75) 100%
+          ),
+          url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80")
+            center/cover;
+      }
+      .tagline-card[data-tagline="3"] .card-bg {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+          ),
+          url("https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80")
+            center/cover;
+      }
+      .tagline-card[data-tagline="4"] .card-bg {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.25) 0%,
+            rgba(0, 0, 0, 0.75) 100%
+          ),
+          url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80")
+            center/cover;
+      }
+
+      .card-content {
+        position: absolute;
+        inset: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        z-index: 2;
+      }
+
+      .card-number {
+        position: absolute;
+        top: 22px;
+        right: 28px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 48px;
+        font-weight: 300;
+        color: rgba(184, 150, 92, 0.25);
+      }
+
+      .card-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .tagline-card.selected .card-icon {
+        background: var(--gold);
+      }
+
+      .card-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--gold);
+        stroke-width: 1.5;
+        fill: none;
+      }
+
+      .tagline-card.selected .card-icon svg {
+        stroke: #000;
+      }
+
+      .card-headline {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--white);
+        margin-bottom: 12px;
+      }
+
+      .card-subline {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+
+      .card-check {
+        position: absolute;
+        top: 22px;
+        left: 28px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 0.3s ease;
+      }
+
+      .tagline-card.selected .card-check {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .card-check svg {
+        width: 14px;
+        height: 14px;
+        stroke: #000;
+        stroke-width: 3;
+      }
+
+      .continue-section {
+        text-align: center;
+        opacity: 0;
+        transform: translateY(15px);
+        transition: all 0.4s ease;
+        pointer-events: none;
+      }
+
+      .continue-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 18px 48px;
+        background: var(--gold);
+        border: none;
+        color: #000;
+        font-family: "Be Vietnam Pro", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+      }
+
+      .btn-primary:hover {
+        background: var(--gold-light);
+        box-shadow: 0 8px 30px rgba(184, 150, 92, 0.35);
+        transform: translateY(-2px);
+      }
+
+      .btn-primary svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 18px 48px;
+        background: var(--navy);
+        border: none;
+        color: var(--white);
+        font-family: "Be Vietnam Pro", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--navy-light);
+        box-shadow: 0 8px 30px rgba(26, 43, 74, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+
+      /* ==================== JOURNEY PAGE ==================== */
+      #journey-page {
+        background: var(--cream);
+        min-height: 100vh;
+      }
+
+      .journey-header {
+        background: var(--navy-dark);
+        padding: 20px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .journey-header-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .btn-back {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-family: "Be Vietnam Pro", sans-serif;
+        font-size: 13px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .btn-back:hover {
+        color: var(--gold);
+      }
+      .btn-back svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+
+      .selected-tagline-display .tagline-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 18px;
+        color: var(--gold-light);
+        font-style: italic;
+      }
+
+      .step-indicator {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+        background: var(--cream-dark);
+        position: sticky;
+        top: 68px;
+        z-index: 99;
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: var(--gold);
+        transition: width 0.5s ease;
+      }
+
+      .journey-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 40px 80px;
+      }
+
+      .step-section {
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-
-        .tagline-card {
-            position: relative;
-            height: 300px;
-            cursor: pointer;
-            overflow: hidden;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.4s ease;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        .tagline-card:hover { border-color: rgba(184, 150, 92, 0.4); }
-        .tagline-card.selected { border-color: var(--gold); border-width: 2px; }
+      .step-intro {
+        text-align: center;
+        margin-bottom: 50px;
+      }
 
-        .card-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.7s ease;
+      .step-timeline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 30px;
+      }
+
+      .timeline-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .timeline-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--cream-dark);
+        transition: all 0.4s ease;
+        position: relative;
+      }
+
+      .timeline-step.active .timeline-dot {
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--gold-dark) 100%
+        );
+        box-shadow: 0 4px 15px rgba(184, 150, 92, 0.4);
+      }
+
+      .timeline-step.completed .timeline-dot {
+        background: var(--gold-light);
+      }
+
+      .timeline-line {
+        width: 40px;
+        height: 2px;
+        background: var(--cream-dark);
+        transition: all 0.4s ease;
+      }
+
+      .timeline-line.completed {
+        background: var(--gold-light);
+      }
+
+      .timeline-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-light);
+        transition: color 0.3s ease;
+      }
+
+      .timeline-step.active .timeline-label {
+        color: var(--gold-dark);
+      }
+
+      .timeline-step.completed .timeline-label {
+        color: var(--gold-light);
+      }
+
+      .step-intro h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 36px;
+        font-weight: 400;
+        color: var(--navy);
+        margin-bottom: 12px;
+      }
+
+      .step-intro p {
+        color: var(--text-secondary);
+        font-size: 15px;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      /* Main Feature Cards */
+      .main-features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 50px;
+      }
+
+      .main-features-grid.cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @media (max-width: 1000px) {
+        .main-features-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
-
-        .tagline-card:hover .card-bg { transform: scale(1.06); }
-
-        .tagline-card[data-tagline="1"] .card-bg {
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
-                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80') center/cover;
+      }
+      @media (max-width: 700px) {
+        .main-features-grid,
+        .main-features-grid.cols-2 {
+          grid-template-columns: 1fr;
+          max-width: 500px;
+          margin-left: auto;
+          margin-right: auto;
         }
-        .tagline-card[data-tagline="2"] .card-bg {
-            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 100%),
-                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80') center/cover;
+      }
+
+      .main-feature-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 36px 32px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        border: 1px solid var(--cream-dark);
+        position: relative;
+      }
+
+      .main-feature-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 24px;
+        bottom: 24px;
+        width: 3px;
+        background: var(--gold);
+        border-radius: 0 2px 2px 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .main-feature-card:hover {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+        transform: translateY(-2px);
+      }
+
+      .main-feature-card.selected {
+        border-color: var(--gold);
+      }
+      .main-feature-card.selected::before {
+        opacity: 1;
+      }
+
+      .feature-card-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .feature-name {
+        color: var(--gold-dark);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+      }
+
+      .feature-check {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 0.3s ease;
+      }
+
+      .main-feature-card.selected .feature-check {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .feature-check svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--white);
+        stroke-width: 3;
+      }
+
+      .feature-headline {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+        font-weight: 400;
+        color: var(--navy);
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+
+      .customer-statement {
+        position: relative;
+        padding-left: 18px;
+        border-left: 2px solid var(--gold-light);
+      }
+
+      .customer-statement p {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 18px;
+        font-style: italic;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Detail Features Section */
+      .detail-features-section {
+        margin-top: 50px;
+        padding-top: 50px;
+        border-top: 1px solid var(--cream-dark);
+        display: none;
+      }
+
+      .detail-features-section.visible {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .detail-section-header {
+        margin-bottom: 40px;
+      }
+
+      .detail-section-label {
+        color: var(--gold-dark);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .detail-section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 36px;
+        font-weight: 400;
+        color: var(--navy);
+      }
+
+      .detail-features-grid {
+        display: grid;
+        gap: 28px;
+      }
+
+      .detail-features-grid.cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .detail-features-grid.cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .detail-features-grid.cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media (max-width: 900px) {
+        .detail-features-grid.cols-3,
+        .detail-features-grid.cols-4,
+        .detail-features-grid.cols-2 {
+          grid-template-columns: 1fr;
+          max-width: 500px;
+          margin: 0 auto;
         }
-        .tagline-card[data-tagline="3"] .card-bg {
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
-                url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80') center/cover;
-        }
-        .tagline-card[data-tagline="4"] .card-bg {
-            background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%),
-                url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80') center/cover;
-        }
+      }
 
-        .card-content {
-            position: absolute;
-            inset: 0;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            z-index: 2;
-        }
+      .detail-feature-card {
+        background: var(--navy-dark);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
 
-        .card-number {
-            position: absolute;
-            top: 22px;
-            right: 28px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 300;
-            color: rgba(184, 150, 92, 0.25);
-        }
+      .detail-feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+      }
 
-        .card-icon {
-            width: 44px;
-            height: 44px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--gold);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
+      .detail-feature-image {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+      }
+      .cols-2 .detail-feature-image {
+        height: 260px;
+      }
 
-        .tagline-card.selected .card-icon { background: var(--gold); }
+      .detail-feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
 
-        .card-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--gold);
-            stroke-width: 1.5;
-            fill: none;
-        }
+      .detail-feature-card:hover .detail-feature-image img {
+        transform: scale(1.08);
+      }
 
-        .tagline-card.selected .card-icon svg { stroke: #000; }
+      .detail-feature-content {
+        padding: 32px;
+        background: var(--navy-dark);
+      }
+      .cols-2 .detail-feature-content {
+        padding: 36px;
+      }
 
-        .card-headline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-weight: 400;
-            color: var(--white);
-            margin-bottom: 12px;
-        }
+      .detail-feature-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--gold-dark) 100%
+        );
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(184, 150, 92, 0.3);
+      }
 
-        .card-subline {
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
-            font-weight: 300;
-            line-height: 1.7;
-        }
+      .detail-feature-icon svg {
+        width: 26px;
+        height: 26px;
+        stroke: var(--navy-dark);
+        stroke-width: 1.5;
+        fill: none;
+      }
 
-        .card-check {
-            position: absolute;
-            top: 22px;
-            left: 28px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: all 0.3s ease;
-        }
+      .detail-feature-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: var(--gold-light);
+        margin-bottom: 14px;
+        line-height: 1.3;
+      }
 
-        .tagline-card.selected .card-check { opacity: 1; transform: scale(1); }
+      .detail-feature-desc {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 1.8;
+      }
 
-        .card-check svg { width: 14px; height: 14px; stroke: #000; stroke-width: 3; }
+      /* Navigation */
+      .step-navigation {
+        text-align: center;
+        margin-top: 70px;
+        padding-top: 50px;
+        border-top: 1px solid var(--cream-dark);
+      }
 
-        .continue-section {
-            text-align: center;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.4s ease;
-            pointer-events: none;
-        }
+      .selection-summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
 
-        .continue-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
-        }
+      .summary-tag {
+        padding: 10px 20px;
+        background: var(--white);
+        border: 1px solid var(--gold-light);
+        border-radius: 25px;
+        font-size: 13px;
+        color: var(--gold-dark);
+        font-weight: 500;
+      }
 
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 48px;
-            background: var(--gold);
-            border: none;
-            color: #000;
-            font-family: 'Be Vietnam Pro', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
+      .summary-empty {
+        color: var(--text-light);
+        font-size: 14px;
+        font-style: italic;
+      }
 
-        .btn-primary:hover {
-            background: var(--gold-light);
-            box-shadow: 0 8px 30px rgba(184, 150, 92, 0.35);
-            transform: translateY(-2px);
-        }
+      .nav-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
 
-        .btn-primary svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 36px;
+        background: transparent;
+        border: 1px solid var(--cream-dark);
+        color: var(--text-secondary);
+        font-family: "Be Vietnam Pro", sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+      }
 
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 48px;
-            background: var(--navy);
-            border: none;
-            color: var(--white);
-            font-family: 'Be Vietnam Pro', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
+      .btn-outline:hover {
+        border-color: var(--gold);
+        color: var(--gold-dark);
+      }
 
-        .btn-secondary:hover {
-            background: var(--navy-light);
-            box-shadow: 0 8px 30px rgba(26, 43, 74, 0.3);
-            transform: translateY(-2px);
-        }
+      .btn-outline svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
 
-        .btn-secondary svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; }
+      /* Completion */
+      .completion-section {
+        text-align: center;
+        padding: 80px 40px;
+      }
 
-        /* ==================== JOURNEY PAGE ==================== */
-        #journey-page { background: var(--cream); min-height: 100vh; }
+      .completion-icon {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--gold-dark) 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 40px;
+        box-shadow: 0 20px 50px rgba(184, 150, 92, 0.3);
+      }
 
-        .journey-header {
-            background: var(--navy-dark);
-            padding: 20px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+      .completion-icon svg {
+        width: 50px;
+        height: 50px;
+        stroke: var(--white);
+        stroke-width: 2;
+      }
 
-        .journey-header-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+      .completion-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 42px;
+        font-weight: 400;
+        color: var(--navy);
+        margin-bottom: 20px;
+      }
 
-        .btn-back {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: none;
-            border: none;
-            color: rgba(255,255,255,0.6);
-            font-family: 'Be Vietnam Pro', sans-serif;
-            font-size: 13px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
+      .completion-desc {
+        color: var(--text-secondary);
+        font-size: 16px;
+        max-width: 600px;
+        margin: 0 auto 40px;
+      }
 
-        .btn-back:hover { color: var(--gold); }
-        .btn-back svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; }
+      .all-selections {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        text-align: left;
+        background: var(--white);
+        border-radius: 16px;
+        padding: 40px;
+        border: 1px solid var(--cream-dark);
+      }
 
-        .selected-tagline-display .tagline-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            color: var(--gold-light);
-            font-style: italic;
-        }
+      .selection-group {
+        margin-bottom: 30px;
+      }
+      .selection-group:last-child {
+        margin-bottom: 0;
+      }
 
-        .step-indicator {
-            color: rgba(255,255,255,0.4);
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
+      .selection-group-title {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gold-dark);
+        margin-bottom: 12px;
+      }
 
-        /* Progress Bar */
-        .progress-bar-container {
-            background: var(--cream-dark);
-            position: sticky;
-            top: 68px;
-            z-index: 99;
-        }
+      .selection-group-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
-        .progress-bar {
-            height: 4px;
-            background: var(--gold);
-            transition: width 0.5s ease;
-        }
-
+      @media (max-width: 768px) {
+        .tagline-container,
         .journey-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 40px 80px;
+          padding: 30px 20px;
         }
-
-        .step-section { animation: fadeIn 0.5s ease; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .tagline-card {
+          height: 260px;
         }
-
-        .step-intro { text-align: center; margin-bottom: 50px; }
+        .journey-header {
+          padding: 15px 20px;
+        }
+        .journey-header-inner {
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+        }
+        .selected-tagline-display {
+          order: -1;
+          width: 100%;
+          text-align: center;
+        }
+        .main-feature-card {
+          padding: 28px 24px;
+        }
+        .nav-buttons {
+          flex-direction: column;
+        }
 
         .step-timeline {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 30px;
+          gap: 4px;
+          padding: 0 10px;
         }
-
-        .timeline-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .timeline-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--cream-dark);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .timeline-step.active .timeline-dot {
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            box-shadow: 0 4px 15px rgba(184, 150, 92, 0.4);
-        }
-
-        .timeline-step.completed .timeline-dot {
-            background: var(--gold-light);
-        }
-
         .timeline-line {
-            width: 40px;
-            height: 2px;
-            background: var(--cream-dark);
-            transition: all 0.4s ease;
+          width: 20px;
         }
-
-        .timeline-line.completed {
-            background: var(--gold-light);
-        }
-
         .timeline-label {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--text-light);
-            transition: color 0.3s ease;
+          font-size: 8px;
+          letter-spacing: 1px;
         }
-
-        .timeline-step.active .timeline-label {
-            color: var(--gold-dark);
+        .timeline-dot {
+          width: 10px;
+          height: 10px;
         }
-
-        .timeline-step.completed .timeline-label {
-            color: var(--gold-light);
+        .timeline-step.active .timeline-dot {
+          width: 14px;
+          height: 14px;
         }
-
-        .step-intro h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 400;
-            color: var(--navy);
-            margin-bottom: 12px;
-        }
-
-        .step-intro p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            font-weight: 300;
-            font-style: italic;
-        }
-
-        /* Main Feature Cards */
-        .main-features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 50px;
-        }
-
-        .main-features-grid.cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (max-width: 1000px) { .main-features-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 700px) { 
-            .main-features-grid,
-            .main-features-grid.cols-2 { 
-                grid-template-columns: 1fr; 
-                max-width: 500px;
-                margin-left: auto;
-                margin-right: auto;
-            } 
-        }
-
-        .main-feature-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 36px 32px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 1px solid var(--cream-dark);
-            position: relative;
-        }
-
-        .main-feature-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 24px;
-            bottom: 24px;
-            width: 3px;
-            background: var(--gold);
-            border-radius: 0 2px 2px 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .main-feature-card:hover {
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            transform: translateY(-2px);
-        }
-
-        .main-feature-card.selected { border-color: var(--gold); }
-        .main-feature-card.selected::before { opacity: 1; }
-
-        .feature-card-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .feature-name {
-            color: var(--gold-dark);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-        }
-
-        .feature-check {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: all 0.3s ease;
-        }
-
-        .main-feature-card.selected .feature-check { opacity: 1; transform: scale(1); }
-        .feature-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 3; }
-
-        .feature-headline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 400;
-            color: var(--navy);
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .customer-statement {
-            position: relative;
-            padding-left: 18px;
-            border-left: 2px solid var(--gold-light);
-        }
-
-        .customer-statement p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-style: italic;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Detail Features Section */
-        .detail-features-section {
-            margin-top: 50px;
-            padding-top: 50px;
-            border-top: 1px solid var(--cream-dark);
-            display: none;
-        }
-
-        .detail-features-section.visible { display: block; animation: fadeIn 0.5s ease; }
-
-        .detail-section-header { margin-bottom: 40px; }
-
-        .detail-section-label {
-            color: var(--gold-dark);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .detail-section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 400;
-            color: var(--navy);
-        }
-
-        .detail-features-grid { 
-            display: grid; 
-            gap: 28px; 
-        }
-        
-        .detail-features-grid.cols-3 { 
-            grid-template-columns: repeat(3, 1fr); 
-        }
-        
-        .detail-features-grid.cols-2 { 
-            grid-template-columns: repeat(2, 1fr); 
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 900px) {
-            .detail-features-grid.cols-3,
-            .detail-features-grid.cols-2 { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-        }
-
-        .detail-feature-card {
-            background: var(--navy-dark);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .detail-feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-        }
-
-        .detail-feature-image { position: relative; height: 220px; overflow: hidden; }
-        .cols-2 .detail-feature-image { height: 260px; }
-
-        .detail-feature-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .detail-feature-card:hover .detail-feature-image img { transform: scale(1.08); }
-
-        .detail-feature-content { padding: 32px; background: var(--navy-dark); }
-        .cols-2 .detail-feature-content { padding: 36px; }
-
-        .detail-feature-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(184, 150, 92, 0.3);
-        }
-
-        .detail-feature-icon svg {
-            width: 26px;
-            height: 26px;
-            stroke: var(--navy-dark);
-            stroke-width: 1.5;
-            fill: none;
-        }
-
-        .detail-feature-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
-            font-weight: 400;
-            color: var(--gold-light);
-            margin-bottom: 14px;
-            line-height: 1.3;
-        }
-
-        .detail-feature-desc {
-            color: rgba(255,255,255,0.75);
-            font-size: 15px;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        /* Navigation */
-        .step-navigation {
-            text-align: center;
-            margin-top: 70px;
-            padding-top: 50px;
-            border-top: 1px solid var(--cream-dark);
-        }
-
-        .selection-summary {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .summary-tag {
-            padding: 10px 20px;
-            background: var(--white);
-            border: 1px solid var(--gold-light);
-            border-radius: 25px;
-            font-size: 13px;
-            color: var(--gold-dark);
-            font-weight: 500;
-        }
-
-        .summary-empty {
-            color: var(--text-light);
-            font-size: 14px;
-            font-style: italic;
-        }
-
-        .nav-buttons {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: transparent;
-            border: 1px solid var(--cream-dark);
-            color: var(--text-secondary);
-            font-family: 'Be Vietnam Pro', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--gold);
-            color: var(--gold-dark);
-        }
-
-        .btn-outline svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; }
-
-        /* Completion */
-        .completion-section { text-align: center; padding: 80px 40px; }
-
-        .completion-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 40px;
-            box-shadow: 0 20px 50px rgba(184, 150, 92, 0.3);
-        }
-
-        .completion-icon svg { width: 50px; height: 50px; stroke: var(--white); stroke-width: 2; }
-
-        .completion-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            font-weight: 400;
-            color: var(--navy);
-            margin-bottom: 20px;
-        }
-
-        .completion-desc {
-            color: var(--text-secondary);
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .all-selections {
-            max-width: 800px;
-            margin: 0 auto 50px;
-            text-align: left;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 40px;
-            border: 1px solid var(--cream-dark);
-        }
-
-        .selection-group { margin-bottom: 30px; }
-        .selection-group:last-child { margin-bottom: 0; }
-
-        .selection-group-title {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            margin-bottom: 12px;
-        }
-
-        .selection-group-items { display: flex; flex-wrap: wrap; gap: 10px; }
-
-        @media (max-width: 768px) {
-            .tagline-container, .journey-content { padding: 30px 20px; }
-            .tagline-card { height: 260px; }
-            .journey-header { padding: 15px 20px; }
-            .journey-header-inner { flex-wrap: wrap; gap: 10px; justify-content: center; }
-            .selected-tagline-display { order: -1; width: 100%; text-align: center; }
-            .main-feature-card { padding: 28px 24px; }
-            .nav-buttons { flex-direction: column; }
-            
-            .step-timeline { 
-                gap: 4px;
-                padding: 0 10px;
-            }
-            .timeline-line { width: 20px; }
-            .timeline-label { font-size: 8px; letter-spacing: 1px; }
-            .timeline-dot { width: 10px; height: 10px; }
-            .timeline-step.active .timeline-dot { width: 14px; height: 14px; }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- PAGE 1: TAGLINE SELECTION -->
     <div id="tagline-page" class="page active">
-        <div class="hero-background"></div>
-        <div class="tagline-container">
-            <header class="tagline-header">
-                <div class="brand-badge">
-                    <div class="brand-line"></div>
-                    <span class="brand-text">Private Wealth Management</span>
-                    <div class="brand-line"></div>
-                </div>
-                <h1 class="tagline-title">
-                    Chọn triết lý tài chính
-                    <span>phù hợp với bạn</span>
-                </h1>
-                <p class="tagline-subtitle">
-                    Mỗi lựa chọn phản ánh một cách tiếp cận khác nhau trong hành trình quản lý tài sản
-                </p>
-            </header>
+      <div class="hero-background"></div>
+      <div class="tagline-container">
+        <header class="tagline-header">
+          <div class="brand-badge">
+            <div class="brand-line"></div>
+            <span class="brand-text">Private Wealth Management</span>
+            <div class="brand-line"></div>
+          </div>
+          <h1 class="tagline-title">
+            Chọn triết lý tài chính
+            <span>phù hợp với bạn</span>
+          </h1>
+          <p class="tagline-subtitle">
+            Mỗi lựa chọn phản ánh một cách tiếp cận khác nhau trong hành trình
+            quản lý tài sản
+          </p>
+        </header>
 
-            <div class="tagline-grid">
-                <div class="tagline-card" data-tagline="1">
-                    <div class="card-bg"></div>
-                    <div class="card-content">
-                        <span class="card-number">01</span>
-                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></div>
-                        <h3 class="card-headline">"Làm chủ từng khắc tận hưởng từng giây"</h3>
-                        <p class="card-subline">Tiết kiệm thời gian tích sản, làm giàu từng khoảnh khắc sống</p>
-                    </div>
-                </div>
-                <div class="tagline-card" data-tagline="2">
-                    <div class="card-bg"></div>
-                    <div class="card-content">
-                        <span class="card-number">02</span>
-                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                        <div class="card-icon"><svg viewBox="0 0 24 24"><polygon points="12,2 22,20 2,20"/><circle cx="12" cy="14" r="3"/></svg></div>
-                        <h3 class="card-headline">"Lợi thế khác biệt cho người xứng tầm"</h3>
-                        <p class="card-subline">Ưu thế và cơ hội không dành cho số đông dành cho giới thượng lưu</p>
-                    </div>
-                </div>
-                <div class="tagline-card" data-tagline="3">
-                    <div class="card-bg"></div>
-                    <div class="card-content">
-                        <span class="card-number">03</span>
-                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22v-8"/><path d="M8 18c-2-2-2-6 4-10c6 4 6 8 4 10"/></svg></div>
-                        <h3 class="card-headline">"Giây phút vàng tạo nên di sản"</h3>
-                        <p class="card-subline">Mỗi quyết định hôm nay là di sản mai sau khi có chuyên gia đáng tin cậy đồng hành</p>
-                    </div>
-                </div>
-                <div class="tagline-card" data-tagline="4">
-                    <div class="card-bg"></div>
-                    <div class="card-content">
-                        <span class="card-number">04</span>
-                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
-                        <h3 class="card-headline">"Giá trị vững bền cho tương lai vững vàng"</h3>
-                        <p class="card-subline">Giải pháp tài chính được thiết kế riêng nhằm gia tăng tài sản và bảo vệ gia đình bạn lâu dài</p>
-                    </div>
-                </div>
+        <div class="tagline-grid">
+          <div class="tagline-card" data-tagline="1">
+            <div class="card-bg"></div>
+            <div class="card-content">
+              <span class="card-number">01</span>
+              <div class="card-check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <h3 class="card-headline">
+                "Làm chủ từng khắc tận hưởng từng giây"
+              </h3>
+              <p class="card-subline">
+                Tiết kiệm thời gian tích sản, làm giàu từng khoảnh khắc sống
+              </p>
             </div>
-
-            <div class="continue-section" id="continue-section">
-                <button class="btn-primary" id="btn-continue">
-                    <span>Tiếp tục</span>
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
+          </div>
+          <div class="tagline-card" data-tagline="2">
+            <div class="card-bg"></div>
+            <div class="card-content">
+              <span class="card-number">02</span>
+              <div class="card-check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="12,2 22,20 2,20" />
+                  <circle cx="12" cy="14" r="3" />
+                </svg>
+              </div>
+              <h3 class="card-headline">
+                "Lợi thế khác biệt cho người xứng tầm"
+              </h3>
+              <p class="card-subline">
+                Ưu thế và cơ hội không dành cho số đông dành cho giới thượng lưu
+              </p>
             </div>
+          </div>
+          <div class="tagline-card" data-tagline="3">
+            <div class="card-bg"></div>
+            <div class="card-content">
+              <span class="card-number">03</span>
+              <div class="card-check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 22v-8" />
+                  <path d="M8 18c-2-2-2-6 4-10c6 4 6 8 4 10" />
+                </svg>
+              </div>
+              <h3 class="card-headline">"Giây phút vàng tạo nên di sản"</h3>
+              <p class="card-subline">
+                Mỗi quyết định hôm nay là di sản mai sau khi có chuyên gia đáng
+                tin cậy đồng hành
+              </p>
+            </div>
+          </div>
+          <div class="tagline-card" data-tagline="4">
+            <div class="card-bg"></div>
+            <div class="card-content">
+              <span class="card-number">04</span>
+              <div class="card-check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 21h18" />
+                  <path d="M5 21V7l7-4 7 4v14" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <h3 class="card-headline">
+                "Giá trị vững bền cho tương lai vững vàng"
+              </h3>
+              <p class="card-subline">
+                Giải pháp tài chính được thiết kế riêng nhằm gia tăng tài sản và
+                bảo vệ gia đình bạn lâu dài
+              </p>
+            </div>
+          </div>
         </div>
+
+        <div class="continue-section" id="continue-section">
+          <button class="btn-primary" id="btn-continue">
+            <span>Tiếp tục</span>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12h14M12 5l7 7-7 7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- PAGE 2: JOURNEY -->
     <div id="journey-page" class="page hidden">
-        <header class="journey-header">
-            <div class="journey-header-inner">
-                <button class="btn-back" id="btn-back">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    <span>Quay lại</span>
-                </button>
-                <div class="selected-tagline-display">
-                    <span class="tagline-text" id="selected-tagline-text"></span>
-                </div>
-                <span class="step-indicator" id="step-indicator">Bước 1 / 5</span>
-            </div>
-        </header>
-
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progress-bar" style="width: 20%"></div>
+      <header class="journey-header">
+        <div class="journey-header-inner">
+          <button class="btn-back" id="btn-back">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M19 12H5M12 19l-7-7 7-7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>Quay lại</span>
+          </button>
+          <div class="selected-tagline-display">
+            <span class="tagline-text" id="selected-tagline-text"></span>
+          </div>
+          <span class="step-indicator" id="step-indicator">Bước 1 / 5</span>
         </div>
+      </header>
 
-        <main class="journey-content" id="journey-content"></main>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar" style="width: 20%"></div>
+      </div>
+
+      <main class="journey-content" id="journey-content"></main>
     </div>
 
     <script>
-        const taglineTexts = {
-            1: '"Làm chủ từng khắc tận hưởng từng giây"',
-            2: '"Lợi thế khác biệt cho người xứng tầm"',
-            3: '"Giây phút vàng tạo nên di sản"',
-            4: '"Giá trị vững bền cho tương lai vững vàng"'
-        };
+      const taglineTexts = {
+        1: '"Làm chủ từng khắc tận hưởng từng giây"',
+        2: '"Lợi thế khác biệt cho người xứng tầm"',
+        3: '"Giây phút vàng tạo nên di sản"',
+        4: '"Giá trị vững bền cho tương lai vững vàng"',
+      };
 
-        const stepsData = [
+      const stepsData = [
+        {
+          id: 1,
+          title: "Nhận biết & Cân nhắc",
+          description:
+            "Chọn những yếu tố quan trọng nhất với bạn khi lựa chọn dịch vụ quản lý tài sản",
+          features: [
             {
-                id: 1, title: "Nhận biết & Cân nhắc",
-                description: "Chọn những yếu tố quan trọng nhất với bạn khi lựa chọn dịch vụ quản lý tài sản",
-                features: [
-                    { id: 1, name: "Tôi thấy mình ở đây", headline: "Dịch vụ được thiết kế cho những người như bạn", statement: "Đây là dịch vụ dành cho những người giống tôi",
-                        details: [
-                            { title: "Nhóm khách hàng", desc: "Hiển thị các nhóm khách hàng cụ thể đang sử dụng dịch vụ (VD: chủ doanh nghiệp, quản lý cấp cao)", image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80", icon: "users" },
-                            { title: "Tình huống thực tế", desc: "Minh họa tình huống thực tế khi sử dụng sản phẩm/dịch vụ (VD: khi tài sản nhàn rỗi, khi thiếu thời gian quản lý)", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80", icon: "lightbulb" },
-                            { title: "Ví dụ ứng dụng", desc: "Ví dụ về cách các tính năng này sẽ được sử dụng trong các tình huống thực tế", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80", icon: "chart" }
-                        ]
-                    },
-                    { id: 2, name: "Uy tín", headline: "Đội ngũ và thương hiệu đáng tin cậy", statement: "Tôi cần tin vào thương hiệu và đội ngũ đứng sau dịch vụ này",
-                        details: [
-                            { title: "Chứng nhận & Giải thưởng", desc: "Hiển thị thương hiệu tài chính đứng sau cùng chứng nhận hay giải thưởng", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80", icon: "award" },
-                            { title: "Khách hàng tiêu biểu", desc: "Hiển thị ví dụ người đã sử dụng sản phẩm/dịch vụ", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", icon: "star" },
-                            { title: "Đội ngũ chuyên gia", desc: "Hiện thị thông tin về đội ngũ chuyên gia, quản lý gia sản", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80", icon: "briefcase" }
-                        ]
-                    },
-                    { id: 3, name: "Giá trị và sinh lời", headline: "Minh bạch về hiệu quả đầu tư", statement: "Tôi muốn thấy tài sản của tôi sẽ sinh lời và quản lý tốt hơn như nào",
-                        details: [
-                            { title: "Tối ưu tài sản", desc: "Hiển thị minh họa trực quan về cách tài sản/dòng tiền được tối ưu khi dùng từng sản phẩm", image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80", icon: "trending" },
-                            { title: "So sánh sản phẩm", desc: "Hiển thị so sánh đơn giản giữa các sản phẩm và giữa có và không sử dụng dịch vụ", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", icon: "compare" }
-                        ]
-                    }
-                ]
+              id: 1,
+              name: "Tôi thấy mình ở đây",
+              headline: "Dịch vụ được thiết kế cho những người như bạn",
+              statement: "Đây là dịch vụ dành cho những người giống tôi",
+              details: [
+                {
+                  title: "Hiển thị các nhóm khách hàng",
+                  desc: "Hiển thị các nhóm khách hàng cụ thể đang sử dụng dịch vụ (VD: chủ doanh nghiệp, quản lý cấp cao)",
+                  image:
+                    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
+                  icon: "users",
+                },
+                {
+                  title: "Minh họa tình huống thực tế",
+                  desc: "Minh họa tình huống thực tế khi sử dụng sản phẩm/dịch vụ (VD: khi tài sản nhàn rỗi, khi thiếu thời gian quản lý)",
+                  image:
+                    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+                  icon: "lightbulb",
+                },
+                {
+                  title: "Ví dụ ứng dụng",
+                  desc: "Ví dụ về cách các tính năng này sẽ được sử dụng trong các tình huống thực tế",
+                  image:
+                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                  icon: "chart",
+                },
+              ],
             },
             {
-                id: 2, title: "Bắt đầu & Làm quen",
-                description: "Quy trình đăng ký được thiết kế tối giản, tôn trọng thời gian của bạn",
-                features: [
-                    { id: 4, name: "Tự thao tác nhanh gọn", headline: "Hoàn tất đăng ký trong vài phút", statement: "Tôi muốn hoàn tất các bước cần thiết thật nhanh chóng và đơn giản",
-                        details: [
-                            { title: "Quy trình rút gọn", desc: "Quy trình đăng ký rút gọn, trực quan với các bước đơn giản", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80", icon: "zap" },
-                            { title: "Tự động điền thông tin", desc: "Tự động điền sẵn thông tin từ dữ liệu có sẵn", image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80", icon: "edit" }
-                        ]
-                    },
-                    { id: 5, name: "Kết nối liền mạch", headline: "Liên kết tài khoản hiện có", statement: "Tôi muốn kết nối trực tiếp với ngân hàng để bắt đầu sử dụng ngay",
-                        details: [
-                            { title: "Kết nối ngân hàng", desc: "Kết nối trực tiếp với tài khoản ngân hàng hiện có", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80", icon: "link" },
-                            { title: "Đa nền tảng", desc: "Hỗ trợ kết nối nhiều ngân hàng/nền tảng phổ biến", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", icon: "grid" }
-                        ]
-                    },
-                    { id: 6, name: "Có nhân viên hỗ trợ", headline: "Đồng hành cùng bạn từ đầu", statement: "Tôi muốn có người hỗ trợ hoàn thiện thủ tục",
-                        details: [
-                            { title: "Hỗ trợ trực tuyến", desc: "Có kênh hỗ trợ trong quá trình đăng ký (chat, hotline)", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80", icon: "message" },
-                            { title: "Nhân viên tận nơi", desc: "Có nhân viên đăng ký tới nhà hỗ trợ", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80", icon: "home" }
-                        ]
-                    }
-                ]
+              id: 2,
+              name: "Uy tín",
+              headline: "Đội ngũ và thương hiệu đáng tin cậy",
+              statement:
+                "Tôi cần tin vào thương hiệu và đội ngũ đứng sau dịch vụ này",
+              details: [
+                {
+                  title: "Hiển thị thương hiệu",
+                  desc: "Hiển thị thương hiệu tài chính đứng sau, chứng nhận và giải thưởng uy tín",
+                  image:
+                    "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80",
+                  icon: "award",
+                },
+                {
+                  title: "Hiển thị ví dụ người đã sử dụng",
+                  desc: "Các khách hàng tiêu biểu, case study và testimonial thực tế",
+                  image:
+                    "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80",
+                  icon: "star",
+                },
+                {
+                  title: "Hiện thị thông tin về đội ngũ chuyên gia",
+                  desc: "Hiện thị thông tin về đội ngũ chuyên gia, quản lý gia sản (VD: năm kinh nghiệm, phong cách đầu tư)",
+                  image:
+                    "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
+                  icon: "briefcase",
+                },
+              ],
             },
             {
-                id: 3, title: "Tư vấn & Lựa chọn sản phẩm",
-                description: "Tự chủ tìm hiểu hoặc nhận tư vấn từ chuyên gia — theo cách bạn mong muốn",
-                features: [
-                    { id: 7, name: "Tự tìm hiểu với công nghệ", headline: "Công nghệ hỗ trợ quyết định", statement: "Tôi muốn tự tìm hiểu và ra quyết định với hỗ trợ của công nghệ",
-                        details: [
-                            { title: "Thiết lập mục tiêu", desc: "Thiết lập mục tiêu cuộc sống & tài chính và đưa ra chiến lược đầu tư", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80", icon: "target" },
-                            { title: "Danh mục mẫu từ CIO", desc: "Nhận định và danh mục mẫu từ CIO, gợi ý đầu tư cá nhân hóa", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", icon: "pieChart" }
-                        ]
-                    },
-                    { id: 8, name: "Ra quyết định với chuyên gia", headline: "Chuyên gia đồng hành mọi quyết định", statement: "Tôi muốn được tham khảo ý kiến của chuyên gia",
-                        details: [
-                            { title: "Chuyên gia giàu kinh nghiệm", desc: "Chuyên gia tư vấn có dày dặn kinh nghiệm và thành tích thực chiến", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80", icon: "award" },
-                            { title: "Tư vấn toàn diện", desc: "Dịch vụ tư vấn toàn diện gia sản cá nhân và gia đình", image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80", icon: "users" }
-                        ]
-                    }
-                ]
+              id: 3,
+              name: "Giá trị và sinh lời",
+              headline: "Minh bạch về hiệu quả đầu tư",
+              statement:
+                "Tôi muốn thấy tài sản của tôi sẽ sinh lời và quản lý tốt hơn như nào",
+              details: [
+                {
+                  title: "Hiển thị cách tối ưu tài sản/dòng tiền",
+                  desc: "Hiển thị minh họa trực quan về cách tài sản/dòng tiền được tối ưu khi dùng từng sản phẩm",
+                  image:
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
+                  icon: "trending",
+                },
+                {
+                  title: "Hiển thị so sánh đơn giản",
+                  desc: "Hiển thị so sánh đơn giản giữa các sản phẩm và giữa có và không sử dụng dịch vụ",
+                  image:
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                  icon: "compare",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: "Bắt đầu & Làm quen",
+          description:
+            "Quy trình đăng ký được thiết kế tối giản, tôn trọng thời gian của bạn",
+          features: [
+            {
+              id: 4,
+              name: "Tự thao tác nhanh gọn",
+              headline: "Hoàn tất đăng ký trong vài phút",
+              statement:
+                "Tôi muốn hoàn tất các bước cần thiết thật nhanh chóng và đơn giản",
+              details: [
+                {
+                  title: "Quy trình đăng ký rút gọn",
+                  desc: "Quy trình đăng ký rút gọn, trục quan",
+                  image:
+                    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+                  icon: "zap",
+                },
+                {
+                  title: "Tự động điền sẵn thông tin",
+                  desc: "Tự động điền sẵn thông tin từ dữ liệu (VD: căn cước công dân, tài khoản ngân hàng)",
+                  image:
+                    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+                  icon: "edit",
+                },
+                {
+                  title: "Hướng dẫn từng bước",
+                  desc: "Hướng dẫn từng bước dễ hiểu, đơn giản",
+                  image:
+                    "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+                  icon: "fileText",
+                },
+                {
+                  title: "Lưu tiến độ",
+                  desc: "Cho phép lưu tiến độ để quay lại hoàn tất sau",
+                  image:
+                    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+                  icon: "save",
+                },
+              ],
             },
             {
-                id: 4, title: "Sử dụng sản phẩm",
-                description: "Quản lý tài sản của bạn một cách chủ động và minh bạch",
-                features: [
-                    { id: 9, name: "Theo dõi danh mục", headline: "Nắm bắt hiệu suất đầu tư mọi lúc", statement: "Tôi muốn theo dõi danh mục đầu tư mọi lúc mọi nơi",
-                        details: [
-                            { title: "Dashboard trực quan", desc: "Giao diện theo dõi danh mục trực quan, dễ sử dụng", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", icon: "monitor" },
-                            { title: "Cảnh báo thông minh", desc: "Nhận thông báo khi có biến động quan trọng", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", icon: "bell" }
-                        ]
-                    },
-                    { id: 10, name: "Báo cáo định kỳ", headline: "Thông tin rõ ràng, đúng lúc", statement: "Tôi muốn nhận báo cáo định kỳ về tình hình tài sản",
-                        details: [
-                            { title: "Báo cáo chi tiết", desc: "Báo cáo định kỳ chi tiết về hiệu suất và phân bổ tài sản", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80", icon: "fileText" },
-                            { title: "Phân tích xu hướng", desc: "Phân tích xu hướng và dự báo để hỗ trợ quyết định", image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80", icon: "trendingUp" }
-                        ]
-                    }
-                ]
+              id: 5,
+              name: "Kết nối liền mạch với ngân hàng/bảo hiểm",
+              headline: "Liên kết ngân hàng/bảo hiểm ngay lập tức",
+              statement:
+                "Tôi muốn kế nối trực tiếp với ngân hàng/bảo hiểm để bắt đầu sử dụng ngay",
+              details: [
+                {
+                  title: "Kết nối trực tiếp",
+                  desc: "Kết nối trực tiếp với tài khoản ngân hàng hiện có để đăng ký tài khoản đầu tư ngay lập tức",
+                  image:
+                    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+                  icon: "link",
+                },
+                {
+                  title: "Liên kết tài khoản",
+                  desc: "Liên kết tài khoản để nạp tiền hoặc tự động nạp tiền",
+                  image:
+                    "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+                  icon: "grid",
+                },
+                {
+                  title: "Hỗ trợ nhiều nền tảng",
+                  desc: "Hỗ trợ kết nối nhiều ngân hàng/nền tảng phổ biến",
+                  image:
+                    "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&q=80",
+                  icon: "server",
+                },
+              ],
             },
             {
-                id: 5, title: "Gắn kết",
-                description: "Mối quan hệ được xây dựng trên sự tin tưởng và cam kết bền vững",
-                features: [
-                    { id: 11, name: "Ưu đãi thành viên", headline: "Quyền lợi dành riêng cho bạn", statement: "Tôi muốn được hưởng những ưu đãi đặc biệt",
-                        details: [
-                            { title: "Phí ưu đãi", desc: "Mức phí ưu đãi đặc biệt dành cho khách hàng thân thiết", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80", icon: "percent" },
-                            { title: "Sự kiện VIP", desc: "Được mời tham gia các sự kiện độc quyền", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", icon: "calendar" }
-                        ]
-                    },
-                    { id: 12, name: "Cộng đồng khách hàng", headline: "Kết nối với người cùng tầm nhìn", statement: "Tôi muốn được kết nối với cộng đồng những nhà đầu tư",
-                        details: [
-                            { title: "Networking", desc: "Cơ hội kết nối với các nhà đầu tư và doanh nhân thành đạt", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", icon: "users" },
-                            { title: "Chia sẻ kiến thức", desc: "Tham gia các buổi chia sẻ kiến thức đầu tư từ chuyên gia", image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80", icon: "book" }
-                        ]
-                    }
-                ]
-            }
-        ];
+              id: 6,
+              name: "Có nhân viên hỗ trợ",
+              headline: "Đồng hành cùng bạn từ đầu",
+              statement: "Tôi muốn có người hỗ trợ hoàn thiện thủ tục",
+              details: [
+                {
+                  title: "Có kênh hỗ trợ khi đăng ký",
+                  desc: "Có kênh hỗ trợ trong quá trình đăng ký (VD: chat, hotline)",
+                  image:
+                    "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
+                  icon: "message",
+                },
+                {
+                  title: "Có nhân viên tới nhà hỗ trợ",
+                  desc: "Có nhân viên đăng ký tới nhà hỗ trợ điền form đăng ký",
+                  image:
+                    "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80",
+                  icon: "home",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: "Tư vấn & Lựa chọn sản phẩm",
+          description:
+            "Tự chủ tìm hiểu hoặc nhận tư vấn từ chuyên gia — theo cách bạn mong muốn",
+          features: [
+            {
+              id: 7,
+              name: "Tự tìm hiểu với hỗ trợ công nghệ",
+              headline: "Công nghệ hỗ trợ quyết định thông minh",
+              statement:
+                "Tôi muốn tự tìm hiểu và ra quyết định theo mục tiêu của tôi, với hỗ trợ của công nghệ",
+              details: [
+                {
+                  title: "Thiết lập mục tiêu cá nhân",
+                  desc: "Thiết lập mục tiêu cuộc sống & tài chính và đưa ra chiến lược đầu tư",
+                  image:
+                    "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
+                  icon: "target",
+                },
+                {
+                  title: "Tham khảo chiến lược đầu tư",
+                  desc: "Tham khảo danh mục hoặc chiến lược đầu tư của chuyên gia/nhà đầu tư top đầu",
+                  image:
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                  icon: "pieChart",
+                },
+                {
+                  title: "Nhận định",
+                  desc: "Nhận định và danh mục mẫu từ CIO",
+                  image:
+                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                  icon: "search",
+                },
+                {
+                  title: "Tự động gợi ý",
+                  desc: "Tự động gợi ý đầu tư cá nhân hóa dựa trên tài sản hiện nay",
+                  image:
+                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                  icon: "search",
+                },
+              ],
+            },
+            {
+              id: 8,
+              name: "Ra quyết định với chuyên gia",
+              headline: "Chuyên gia đồng hành mọi quyết định",
+              statement:
+                "Tôi muốn được tham khảo ý kiến của chuyên gia và người thân khi lên chiến lược đầu tư/tích sản",
+              details: [
+                {
+                  title: "Chuyên gia tư vấn có dày dặn kinh nghiệm",
+                  desc: "Chuyên gia tư vấn có dày dặn kinh nghiệm và thành tích thực chiến",
+                  image:
+                    "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
+                  icon: "award",
+                },
+                {
+                  title: "Chuyên gia có sự thấu hiểu",
+                  desc: "Chuyên gia có sự chăm sóc tận tâm và chân thành",
+                  image:
+                    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
+                  icon: "heart",
+                },
+                {
+                  title: "Được tư vấn toàn diện",
+                  desc: "Dịch vụ tư vấn toàn diện gia sản cá nhân và gia đình",
+                  image:
+                    "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+                  icon: "users",
+                },
+                {
+                  title: "Rà soát mục tiêu",
+                  desc: "Rà soát mục tiêu và ưu tiên mục tiêu cùng chuyên gia",
+                  image:
+                    "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80",
+                  icon: "book",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 4,
+          title: "Sử dụng sản phẩm",
+          description: "Quản lý tài sản của bạn một cách chủ động và minh bạch",
+          features: [
+            {
+              id: 9,
+              name: "Tự theo dõi và chủ động",
+              headline: "Kiểm soát hoàn toàn quá trình đầu tư",
+              statement:
+                "Tôi muốn tự kiểm soát quá trình đầu tư và chỉ nhận hỗ trợ khi cần",
+              details: [
+                {
+                  title: "Đầu tư linh hoạt, rút vốn dễ",
+                  desc: "Đầu tư linh hoạt với số vốn nhỏ",
+                  image:
+                    "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80",
+                  icon: "move",
+                },
+                {
+                  title: "Mô phỏng đầu tư",
+                  desc: "Mô phỏng đầu tư/sản phẩm theo thời gian",
+                  image:
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                  icon: "monitor",
+                },
+                {
+                  title: "Gợi ý tái cân bằng",
+                  desc: "Gợi ý tái cân bằng danh mục theo ngưỡng",
+                  image:
+                    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
+                  icon: "newspaper",
+                },
+                {
+                  title: "Công cụ phân tích kỹ thuật",
+                  desc: "Công cụ phân tích kỹ thuật",
+                  image:
+                    "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+                  icon: "bell",
+                },
+                {
+                  title: "Theo dõi danh mục theo mục tiêu",
+                  desc: "Theo dõi danh mục theo mục tiêu",
+                  image:
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
+                  icon: "trendingUp",
+                },
+              ],
+            },
+            {
+              id: 10,
+              name: "Vận hành tự động",
+              headline: "Đầu tư ổn định, không lo can thiệp",
+              statement:
+                "Tôi muốn quá trình đầu tư chạy ổn định mà không phải can thiệp nhiều",
+              details: [
+                {
+                  title: "Đầu tư định kỳ tự động",
+                  desc: "Đầu tư định kỳ tự động (cho sản phẩm quỹ,…)",
+                  image:
+                    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+                  icon: "clock",
+                },
+                {
+                  title: "Giao dịch sao chép hoặc tự động",
+                  desc: "Giao dịch sao chép hoặc tự động",
+                  image:
+                    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+                  icon: "cpu",
+                },
+                {
+                  title: "Tự động vận hành đầu tư/tích sản theo chiến lược đã chọn",
+                  desc: "Tự động vận hành đầu tư/tích sản theo chiến lược đã chọn",
+                  image:
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                  icon: "scale",
+                },
+              ],
+            },
+            {
+              id: 11,
+              name: "Chuyên gia hỗ trợ vận hành",
+              headline: "Chuyên gia theo dõi và hỗ trợ liên tục",
+              statement:
+                "Tôi muốn có chuyên gia theo dõi sản phẩm và hỗ trợ khi cần thiết",
+              details: [
+                {
+                  title: "Chuyên gia/nhân viên chủ động theo dõi biến động tải sản",
+                  desc: "Báo cáo định kỳ từ chuyên gia về tình hình danh mục đầu tư",
+                  image:
+                    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+                  icon: "fileText",
+                },
+                {
+                  title: "Chuyên gia/nhân viên đề xuất và thực hiện điều chỉnh theo uỷ quyền",
+                  desc: "Đánh giá chi tiết hiệu suất và đề xuất điều chỉnh nếu cần",
+                  image:
+                    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+                  icon: "search",
+                },
+                {
+                  title: "Chuyên gia/nhân viên chủ động liên hệ khi có biến động quan trọng",
+                  desc: "Giám sát liên tục các biến động của thị trường và danh mục",
+                  image:
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                  icon: "eye",
+                },
+                {
+                  title: "Chuyên gia/nhân viên báo cáo định kỳ tình trạng tài sản",
+                  desc: "Liên hệ ngay khi phát hiện rủi ro hoặc cơ hội đầu tư",
+                  image:
+                    "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+                  icon: "alertTriangle",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 5,
+          title: "Gắn kết",
+          description:
+            "Mối quan hệ được xây dựng trên sự tin tưởng và cam kết bền vững",
+          features: [
+            {
+              id: 12,
+              name: "Được quan tâm và trân trọng",
+              headline: "Quyền lợi đặc biệt dành riêng cho bạn",
+              statement: "Tôi muốn nhận được những đặc quyền riêng",
+              details: [
+                {
+                  title: "Ưu đãi và tích điểm liên kết ngân hàng - chứng khoán",
+                  desc: "Tích lũy điểm thưởng từ mọi giao dịch, đổi quà và ưu đãi hấp dẫn",
+                  image:
+                    "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
+                  icon: "gift",
+                },
+                {
+                  title: "Kênh dịch vụ ưu tiên",
+                  desc: "Ưu tiên xử lý giao dịch, hotline riêng, phòng chờ VIP",
+                  image:
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+                  icon: "star",
+                },
+                {
+                  title: "Nhân viên chủ động liên hệ và cập nhật",
+                  desc: "Tư vấn viên riêng chủ động báo cáo và tư vấn định kỳ",
+                  image:
+                    "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
+                  icon: "phone",
+                },
+              ],
+            },
+            {
+              id: 13,
+              name: "Phục vụ gia đình dài hạn",
+              headline: "Kế hoạch tài sản cho nhiều thế hệ",
+              statement: "Tôi muốn kế hoạch tài sản phục vụ nhiều thế hệ",
+              details: [
+                {
+                  title: "Tổng quan tài sản của cả gia đình",
+                  desc: "Dashboard tổng hợp toàn bộ tài sản của các thành viên trong gia đình",
+                  image:
+                    "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80",
+                  icon: "users",
+                },
+                {
+                  title: "Tài khoản đầu tư cho con cái có giám sát bởi bố mẹ",
+                  desc: "Tài khoản ủy thác cho con em, quản lý đến khi đủ tuổi trưởng thành",
+                  image:
+                    "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80",
+                  icon: "heart",
+                },
+                {
+                  title: "Lập kế hoạch tài chính đa thế hệ cùng RM",
+                  desc: "Tư vấn chuyên sâu về kế hoạch tài chính và kế thừa cho gia đình",
+                  image:
+                    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+                  icon: "home",
+                },
+              ],
+            },
+            {
+              id: 14,
+              name: "Trau dồi kiến thức",
+              headline: "Nâng cao năng lực đầu tư của bạn",
+              statement:
+                "Tôi muốn tự tin hơn trong quyết định đầu tư tiếp theo",
+              details: [
+                {
+                  title: "Cộng đồng nhà đầu tư",
+                  desc: "Tham gia cộng đồng, networking với các nhà đầu tư thành công",
+                  image:
+                    "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80",
+                  icon: "users",
+                },
+                {
+                  title: "Trung tâm học tập",
+                  desc: "Khóa học, seminar, workshop về đầu tư và quản lý tài chính",
+                  image:
+                    "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
+                  icon: "book",
+                },
+                {
+                  title: "Tài khoản giao dịch mô phỏng",
+                  desc: "Thực hành với tài khoản ảo trước khi đầu tư thật",
+                  image:
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                  icon: "monitor",
+                },
+              ],
+            },
+          ],
+        },
+      ];
 
-        const icons = {
-            users: '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-            lightbulb: '<svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.9V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.1A7 7 0 0 0 12 2z"/></svg>',
-            chart: '<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>',
-            award: '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>',
-            star: '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-            briefcase: '<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
-            trending: '<svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
-            compare: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>',
-            zap: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-            edit: '<svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
-            link: '<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
-            grid: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
-            message: '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-            home: '<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
-            target: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
-            pieChart: '<svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>',
-            monitor: '<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
-            bell: '<svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>',
-            fileText: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
-            trendingUp: '<svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
-            percent: '<svg viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>',
-            calendar: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
-            book: '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
-            check: '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
-        };
+      const icons = {
+        users:
+          '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+        lightbulb:
+          '<svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.9V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.1A7 7 0 0 0 12 2z"/></svg>',
+        chart:
+          '<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>',
+        award:
+          '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>',
+        star: '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+        briefcase:
+          '<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+        trending:
+          '<svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+        compare:
+          '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>',
+        zap: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+        edit: '<svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
+        link: '<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+        grid: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+        message:
+          '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+        home: '<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+        target:
+          '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+        pieChart:
+          '<svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>',
+        monitor:
+          '<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+        bell: '<svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>',
+        fileText:
+          '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+        trendingUp:
+          '<svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+        gift: '<svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>',
+        phone:
+          '<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+        heart:
+          '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+        book: '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+        check:
+          '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>',
+        search:
+          '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+        server:
+          '<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>',
+        move: '<svg viewBox="0 0 24 24"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>',
+        newspaper:
+          '<svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><line x1="10" y1="6" x2="18" y2="6"/><line x1="10" y1="10" x2="18" y2="10"/><line x1="10" y1="14" x2="18" y2="14"/><line x1="10" y1="18" x2="18" y2="18"/></svg>',
+        clock:
+          '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+        cpu: '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>',
+        scale:
+          '<svg viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 7l4.5-4.5L12 7"/><path d="M21 7l-4.5-4.5L12 7"/><path d="M3 17l4.5 4.5L12 17"/><path d="M21 17l-4.5 4.5L12 17"/></svg>',
+        eye: '<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+        alertTriangle:
+          '<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+      };
 
-        let selectedTagline = null;
-        let currentStep = 1;
-        let selections = { 1: [], 2: [], 3: [], 4: [], 5: [] };
-        let currentDetailFeature = null;
+      let selectedTagline = null;
+      let currentStep = 1;
+      let selections = { 1: [], 2: [], 3: [], 4: [], 5: [] };
+      let currentDetailFeature = null;
 
-        const taglinePage = document.getElementById('tagline-page');
-        const journeyPage = document.getElementById('journey-page');
-        const taglineCards = document.querySelectorAll('.tagline-card');
-        const continueSection = document.getElementById('continue-section');
-        const btnContinue = document.getElementById('btn-continue');
-        const btnBack = document.getElementById('btn-back');
-        const journeyContent = document.getElementById('journey-content');
-        const stepIndicator = document.getElementById('step-indicator');
-        const progressBar = document.getElementById('progress-bar');
-        const selectedTaglineText = document.getElementById('selected-tagline-text');
+      const taglinePage = document.getElementById("tagline-page");
+      const journeyPage = document.getElementById("journey-page");
+      const taglineCards = document.querySelectorAll(".tagline-card");
+      const continueSection = document.getElementById("continue-section");
+      const btnContinue = document.getElementById("btn-continue");
+      const btnBack = document.getElementById("btn-back");
+      const journeyContent = document.getElementById("journey-content");
+      const stepIndicator = document.getElementById("step-indicator");
+      const progressBar = document.getElementById("progress-bar");
+      const selectedTaglineText = document.getElementById(
+        "selected-tagline-text",
+      );
 
-        taglineCards.forEach(card => {
-            card.addEventListener('click', function() {
-                taglineCards.forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedTagline = this.dataset.tagline;
-                continueSection.classList.add('visible');
-            });
+      taglineCards.forEach((card) => {
+        card.addEventListener("click", function () {
+          taglineCards.forEach((c) => c.classList.remove("selected"));
+          this.classList.add("selected");
+          selectedTagline = this.dataset.tagline;
+          continueSection.classList.add("visible");
         });
+      });
 
-        btnContinue.addEventListener('click', function() {
-            if (selectedTagline) {
-                taglinePage.classList.remove('active');
-                taglinePage.classList.add('hidden');
-                journeyPage.classList.remove('hidden');
-                setTimeout(() => journeyPage.classList.add('active'), 50);
-                selectedTaglineText.textContent = taglineTexts[selectedTagline];
-                renderStep(1);
-            }
-        });
+      btnContinue.addEventListener("click", function () {
+        if (selectedTagline) {
+          taglinePage.classList.remove("active");
+          taglinePage.classList.add("hidden");
+          journeyPage.classList.remove("hidden");
+          setTimeout(() => journeyPage.classList.add("active"), 50);
+          selectedTaglineText.textContent = taglineTexts[selectedTagline];
+          renderStep(1);
+        }
+      });
 
-        btnBack.addEventListener('click', function() {
-            if (currentStep > 1) {
-                renderStep(currentStep - 1);
-            } else {
-                journeyPage.classList.remove('active');
-                setTimeout(() => {
-                    journeyPage.classList.add('hidden');
-                    taglinePage.classList.remove('hidden');
-                    setTimeout(() => taglinePage.classList.add('active'), 50);
-                }, 300);
-            }
-        });
+      btnBack.addEventListener("click", function () {
+        if (currentStep > 1) {
+          renderStep(currentStep - 1);
+        } else {
+          journeyPage.classList.remove("active");
+          setTimeout(() => {
+            journeyPage.classList.add("hidden");
+            taglinePage.classList.remove("hidden");
+            setTimeout(() => taglinePage.classList.add("active"), 50);
+          }, 300);
+        }
+      });
 
-        function renderStep(stepNum) {
-            currentStep = stepNum;
-            stepIndicator.textContent = `Bước ${stepNum} / 5`;
-            progressBar.style.width = `${stepNum * 20}%`;
+      function renderStep(stepNum) {
+        currentStep = stepNum;
+        stepIndicator.textContent = `Bước ${stepNum} / 5`;
+        progressBar.style.width = `${stepNum * 20}%`;
 
-            if (stepNum > 5) {
-                renderCompletion();
-                return;
-            }
+        if (stepNum > 5) {
+          renderCompletion();
+          return;
+        }
 
-            const step = stepsData[stepNum - 1];
-            const numFeatures = step.features.length;
-            const gridClass = numFeatures === 2 ? 'main-features-grid cols-2' : 'main-features-grid';
-            
-            journeyContent.innerHTML = `
+        const step = stepsData[stepNum - 1];
+        const numFeatures = step.features.length;
+        const gridClass =
+          numFeatures === 2
+            ? "main-features-grid cols-2"
+            : "main-features-grid";
+
+        journeyContent.innerHTML = `
                 <div class="step-section">
                     <div class="step-intro">
                         ${renderTimeline(stepNum)}
@@ -1140,7 +1846,7 @@
                         <p>${step.description}</p>
                     </div>
                     <div class="${gridClass}" id="features-grid">
-                        ${step.features.map(f => renderFeatureCard(f, stepNum)).join('')}
+                        ${step.features.map((f) => renderFeatureCard(f, stepNum)).join("")}
                     </div>
                     <div class="detail-features-section" id="detail-section">
                         <div class="detail-section-header">
@@ -1152,9 +1858,9 @@
                     <div class="step-navigation">
                         <div class="selection-summary" id="summary">${renderSummary(stepNum)}</div>
                         <div class="nav-buttons">
-                            ${stepNum > 1 ? `<button class="btn-outline" onclick="renderStep(${stepNum - 1})"><svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Quay lại</span></button>` : ''}
+                            ${stepNum > 1 ? `<button class="btn-outline" onclick="renderStep(${stepNum - 1})"><svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Quay lại</span></button>` : ""}
                             <button class="btn-secondary" onclick="goToNextStep()">
-                                <span>${stepNum === 5 ? 'Hoàn thành' : 'Tiếp tục bước tiếp theo'}</span>
+                                <span>${stepNum === 5 ? "Hoàn thành" : "Tiếp tục bước tiếp theo"}</span>
                                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </button>
                         </div>
@@ -1162,32 +1868,45 @@
                 </div>
             `;
 
-            document.querySelectorAll('#features-grid .main-feature-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const featureId = parseInt(this.dataset.featureId);
-                    this.classList.toggle('selected');
-                    
-                    if (this.classList.contains('selected')) {
-                        if (!selections[stepNum].includes(featureId)) selections[stepNum].push(featureId);
-                        showDetailFeatures(stepNum, featureId);
-                    } else {
-                        selections[stepNum] = selections[stepNum].filter(id => id !== featureId);
-                        if (currentDetailFeature === featureId) {
-                            if (selections[stepNum].length > 0) showDetailFeatures(stepNum, selections[stepNum][selections[stepNum].length - 1]);
-                            else document.getElementById('detail-section').classList.remove('visible');
-                        }
-                    }
-                    document.getElementById('summary').innerHTML = renderSummary(stepNum);
-                });
+        document
+          .querySelectorAll("#features-grid .main-feature-card")
+          .forEach((card) => {
+            card.addEventListener("click", function () {
+              const featureId = parseInt(this.dataset.featureId);
+              this.classList.toggle("selected");
+
+              if (this.classList.contains("selected")) {
+                if (!selections[stepNum].includes(featureId))
+                  selections[stepNum].push(featureId);
+                showDetailFeatures(stepNum, featureId);
+              } else {
+                selections[stepNum] = selections[stepNum].filter(
+                  (id) => id !== featureId,
+                );
+                if (currentDetailFeature === featureId) {
+                  if (selections[stepNum].length > 0)
+                    showDetailFeatures(
+                      stepNum,
+                      selections[stepNum][selections[stepNum].length - 1],
+                    );
+                  else
+                    document
+                      .getElementById("detail-section")
+                      .classList.remove("visible");
+                }
+              }
+              document.getElementById("summary").innerHTML =
+                renderSummary(stepNum);
             });
+          });
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
 
-        function renderFeatureCard(feature, stepNum) {
-            const isSelected = selections[stepNum].includes(feature.id);
-            return `
-                <div class="main-feature-card ${isSelected ? 'selected' : ''}" data-feature-id="${feature.id}">
+      function renderFeatureCard(feature, stepNum) {
+        const isSelected = selections[stepNum].includes(feature.id);
+        return `
+                <div class="main-feature-card ${isSelected ? "selected" : ""}" data-feature-id="${feature.id}">
                     <div class="feature-card-header">
                         <span class="feature-name">${feature.name}</span>
                         <div class="feature-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -1196,20 +1915,24 @@
                     <div class="customer-statement"><p>"${feature.statement}"</p></div>
                 </div>
             `;
-        }
+      }
 
-        function showDetailFeatures(stepNum, featureId) {
-            const step = stepsData[stepNum - 1];
-            const feature = step.features.find(f => f.id === featureId);
-            if (!feature) return;
+      function showDetailFeatures(stepNum, featureId) {
+        const step = stepsData[stepNum - 1];
+        const feature = step.features.find((f) => f.id === featureId);
+        if (!feature) return;
 
-            currentDetailFeature = featureId;
-            const numItems = feature.details.length;
-            let colsClass = numItems === 2 ? 'cols-2' : 'cols-3';
+        currentDetailFeature = featureId;
+        const numItems = feature.details.length;
+        let colsClass =
+          numItems === 2 ? "cols-2" : numItems === 4 ? "cols-4" : "cols-3";
 
-            document.getElementById('detail-title').textContent = feature.name;
-            document.getElementById('detail-grid').className = 'detail-features-grid ' + colsClass;
-            document.getElementById('detail-grid').innerHTML = feature.details.map(d => `
+        document.getElementById("detail-title").textContent = feature.name;
+        document.getElementById("detail-grid").className =
+          "detail-features-grid " + colsClass;
+        document.getElementById("detail-grid").innerHTML = feature.details
+          .map(
+            (d) => `
                 <div class="detail-feature-card">
                     <div class="detail-feature-image"><img src="${d.image}" alt="${d.title}" loading="lazy"></div>
                     <div class="detail-feature-content">
@@ -1218,69 +1941,92 @@
                         <p class="detail-feature-desc">${d.desc}</p>
                     </div>
                 </div>
-            `).join('');
+            `,
+          )
+          .join("");
 
-            document.getElementById('detail-section').classList.add('visible');
-        }
+        document.getElementById("detail-section").classList.add("visible");
+      }
 
-        function renderSummary(stepNum) {
-            if (selections[stepNum].length === 0) return '<span class="summary-empty">Chọn ít nhất một tính năng để tiếp tục</span>';
-            const step = stepsData[stepNum - 1];
-            return selections[stepNum].map(id => {
-                const feature = step.features.find(f => f.id === id);
-                return `<span class="summary-tag">${feature.name}</span>`;
-            }).join('');
-        }
+      function renderSummary(stepNum) {
+        if (selections[stepNum].length === 0)
+          return '<span class="summary-empty">Chọn ít nhất một tính năng để tiếp tục</span>';
+        const step = stepsData[stepNum - 1];
+        return selections[stepNum]
+          .map((id) => {
+            const feature = step.features.find((f) => f.id === id);
+            return `<span class="summary-tag">${feature.name}</span>`;
+          })
+          .join("");
+      }
 
-        function renderTimeline(currentStep) {
-            const steps = ['Nhận biết', 'Bắt đầu', 'Tư vấn', 'Sử dụng', 'Gắn kết'];
-            let html = '<div class="step-timeline">';
-            
-            for (let i = 0; i < 5; i++) {
-                const stepClass = i + 1 === currentStep ? 'active' : (i + 1 < currentStep ? 'completed' : '');
-                const lineClass = i + 1 < currentStep ? 'completed' : '';
-                
-                html += `
+      function renderTimeline(currentStep) {
+        const steps = ["Nhận biết", "Bắt đầu", "Tư vấn", "Sử dụng", "Gắn kết"];
+        let html = '<div class="step-timeline">';
+
+        for (let i = 0; i < 5; i++) {
+          const stepClass =
+            i + 1 === currentStep
+              ? "active"
+              : i + 1 < currentStep
+                ? "completed"
+                : "";
+          const lineClass = i + 1 < currentStep ? "completed" : "";
+
+          html += `
                     <div class="timeline-step ${stepClass}">
                         <div class="timeline-dot"></div>
                         <span class="timeline-label">${steps[i]}</span>
                     </div>
                 `;
-                
-                if (i < 4) {
-                    html += `<div class="timeline-line ${lineClass}"></div>`;
-                }
-            }
-            
-            html += '</div>';
-            return html;
+
+          if (i < 4) {
+            html += `<div class="timeline-line ${lineClass}"></div>`;
+          }
         }
 
-        function goToNextStep() {
-            renderStep(currentStep + 1);
-        }
+        html += "</div>";
+        return html;
+      }
 
-        function renderCompletion() {
-            stepIndicator.textContent = 'Hoàn thành';
-            progressBar.style.width = '100%';
+      function goToNextStep() {
+        renderStep(currentStep + 1);
+      }
 
-            journeyContent.innerHTML = `
+      function renderCompletion() {
+        stepIndicator.textContent = "Hoàn thành";
+        progressBar.style.width = "100%";
+
+        journeyContent.innerHTML = `
                 <div class="completion-section">
                     <div class="completion-icon">${icons.check}</div>
                     <h2 class="completion-title">Cảm ơn bạn đã hoàn thành!</h2>
                     <p class="completion-desc">Chúng tôi đã ghi nhận các lựa chọn của bạn. Đội ngũ tư vấn sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
                     <div class="all-selections">
-                        ${stepsData.map((step, i) => `
+                        ${stepsData
+                          .map(
+                            (step, i) => `
                             <div class="selection-group">
                                 <div class="selection-group-title">${step.title}</div>
                                 <div class="selection-group-items">
-                                    ${selections[i + 1].length > 0 ? selections[i + 1].map(id => {
-                                        const feature = step.features.find(f => f.id === id);
-                                        return `<span class="summary-tag">${feature.name}</span>`;
-                                    }).join('') : '<span class="summary-empty">Chưa chọn</span>'}
+                                    ${
+                                      selections[i + 1].length > 0
+                                        ? selections[i + 1]
+                                            .map((id) => {
+                                              const feature =
+                                                step.features.find(
+                                                  (f) => f.id === id,
+                                                );
+                                              return `<span class="summary-tag">${feature.name}</span>`;
+                                            })
+                                            .join("")
+                                        : '<span class="summary-empty">Chưa chọn</span>'
+                                    }
                                 </div>
                             </div>
-                        `).join('')}
+                        `,
+                          )
+                          .join("")}
                     </div>
                     <button class="btn-primary" onclick="location.reload()">
                         <span>Bắt đầu lại</span>
@@ -1288,7 +2034,7 @@
                     </button>
                 </div>
             `;
-        }
+      }
     </script>
-</body>
+  </body>
 </html>
