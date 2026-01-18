@@ -157,7 +157,7 @@
             }
         }
 
-        /* Card with Background Image */
+        /* Tagline Card */
         .tagline-card {
             position: relative;
             height: 300px;
@@ -185,7 +185,6 @@
             border-width: 2px;
         }
 
-        /* Background Image */
         .card-bg {
             position: absolute;
             inset: 0;
@@ -199,7 +198,6 @@
             transform: scale(1.06);
         }
 
-        /* Card backgrounds */
         .tagline-card[data-tagline="1"] .card-bg {
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
@@ -224,7 +222,6 @@
                 url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80') center/cover;
         }
 
-        /* Card Content */
         .card-content {
             position: absolute;
             inset: 0;
@@ -413,10 +410,6 @@
             stroke-width: 2;
         }
 
-        .selected-tagline-display {
-            text-align: center;
-        }
-
         .selected-tagline-display .tagline-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 18px;
@@ -456,82 +449,70 @@
             font-weight: 300;
         }
 
-        /* Feature Cards Grid */
-        .features-grid {
+        /* Main Feature Cards - 3 columns */
+        .main-features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+            margin-bottom: 50px;
         }
 
         @media (max-width: 1000px) {
-            .features-grid {
+            .main-features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 700px) {
-            .features-grid {
+            .main-features-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Feature Card - Image Style */
-        .feature-card {
+        /* Main Feature Card */
+        .main-feature-card {
             background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
+            border-radius: 8px;
+            padding: 30px;
             cursor: pointer;
             transition: all 0.4s ease;
-            border: 1px solid transparent;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-        }
-
-        .feature-card.selected {
-            border-color: var(--gold);
-            box-shadow: 0 20px 50px rgba(184, 150, 92, 0.15);
-        }
-
-        /* Feature Image */
-        .feature-image {
+            border: 1px solid var(--cream-dark);
             position: relative;
-            height: 180px;
-            overflow: hidden;
         }
 
-        .feature-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .feature-card:hover .feature-image img {
-            transform: scale(1.05);
-        }
-
-        .feature-image-overlay {
+        .main-feature-card::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.4) 100%);
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* Feature Content */
-        .feature-content {
-            padding: 28px;
+        .main-feature-card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
         }
 
-        .feature-name {
+        .main-feature-card.selected {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(184, 150, 92, 0.05) 100%);
+        }
+
+        .main-feature-card.selected::before {
+            opacity: 1;
+        }
+
+        .feature-card-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             margin-bottom: 16px;
         }
 
-        .feature-name span {
+        .feature-name {
             color: var(--gold-dark);
             font-size: 11px;
             font-weight: 600;
@@ -552,7 +533,7 @@
             transition: all 0.3s ease;
         }
 
-        .feature-card.selected .feature-check {
+        .main-feature-card.selected .feature-check {
             opacity: 1;
             transform: scale(1);
         }
@@ -577,7 +558,6 @@
             position: relative;
             padding-left: 16px;
             border-left: 2px solid var(--gold-light);
-            margin-bottom: 20px;
         }
 
         .customer-statement p {
@@ -588,54 +568,117 @@
             line-height: 1.6;
         }
 
-        /* Feature Details - Expandable */
-        .feature-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
+        /* Detail Features Section - Appears when card is selected */
+        .detail-features-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--cream-dark);
+            display: none;
         }
 
-        .feature-card.selected .feature-details {
-            max-height: 400px;
+        .detail-features-section.visible {
+            display: block;
+            animation: fadeInUp 0.5s ease forwards;
         }
 
-        .details-divider {
-            height: 1px;
-            background: var(--cream-dark);
-            margin-bottom: 20px;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .details-label {
+        .detail-section-header {
+            margin-bottom: 30px;
+        }
+
+        .detail-section-label {
             color: var(--gold-dark);
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 14px;
+            margin-bottom: 8px;
         }
 
-        .details-list {
-            list-style: none;
+        .detail-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--navy);
         }
 
-        .details-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            color: var(--text-secondary);
-            font-size: 13px;
-            margin-bottom: 10px;
-            line-height: 1.6;
+        /* Detail Feature Cards with Images */
+        .detail-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
-        .details-list li::before {
-            content: '';
-            width: 5px;
-            height: 5px;
-            min-width: 5px;
-            background: var(--gold);
-            border-radius: 50%;
-            margin-top: 7px;
+        @media (max-width: 900px) {
+            .detail-features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .detail-features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Detail Feature Card - With Image */
+        .detail-feature-card {
+            background: var(--navy-dark);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .detail-feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .detail-feature-image {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .detail-feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .detail-feature-card:hover .detail-feature-image img {
+            transform: scale(1.05);
+        }
+
+        .detail-feature-content {
+            padding: 24px;
+        }
+
+        .detail-feature-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .detail-feature-desc {
+            color: rgba(255,255,255,0.65);
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.7;
         }
 
         /* Continue Section */
@@ -644,6 +687,30 @@
             margin-top: 60px;
             padding-top: 40px;
             border-top: 1px solid var(--cream-dark);
+        }
+
+        .selection-summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .summary-tag {
+            padding: 8px 16px;
+            background: var(--white);
+            border: 1px solid var(--cream-dark);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .summary-empty {
+            color: var(--text-light);
+            font-size: 13px;
+            font-style: italic;
         }
 
         .btn-features-continue {
@@ -677,52 +744,6 @@
             stroke-width: 2;
         }
 
-        /* Summary Badge */
-        .selection-summary {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .summary-tag {
-            padding: 8px 16px;
-            background: var(--white);
-            border: 1px solid var(--cream-dark);
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .summary-empty {
-            color: var(--text-light);
-            font-size: 13px;
-            font-style: italic;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-in {
-            animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .delay-3 { animation-delay: 0.3s; opacity: 0; }
-        .delay-4 { animation-delay: 0.4s; opacity: 0; }
-
         /* Responsive */
         @media (max-width: 768px) {
             .tagline-container,
@@ -732,10 +753,6 @@
 
             .tagline-card {
                 height: 260px;
-            }
-
-            .card-headline {
-                font-size: 20px;
             }
 
             .features-header {
@@ -751,10 +768,7 @@
             .selected-tagline-display {
                 order: -1;
                 width: 100%;
-            }
-
-            .feature-image {
-                height: 160px;
+                text-align: center;
             }
         }
     </style>
@@ -766,7 +780,6 @@
         <div class="hero-background"></div>
 
         <div class="tagline-container">
-            <!-- Header -->
             <header class="tagline-header">
                 <div class="brand-badge">
                     <div class="brand-line"></div>
@@ -782,88 +795,61 @@
                 </p>
             </header>
 
-            <!-- Tagline Cards -->
             <div class="tagline-grid">
-                <!-- Card 1 -->
-                <div class="tagline-card animate-in delay-1" data-tagline="1">
+                <div class="tagline-card" data-tagline="1">
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">01</span>
                         <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
                         <div class="card-icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="9"/>
-                                <path d="M12 6v6l4 2"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
                         </div>
                         <h3 class="card-headline">"Làm chủ từng khắc tận hưởng từng giây"</h3>
                         <p class="card-subline">Tiết kiệm thời gian tích sản, làm giàu từng khoảnh khắc sống</p>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="tagline-card animate-in delay-2" data-tagline="2">
+                <div class="tagline-card" data-tagline="2">
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">02</span>
                         <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
                         <div class="card-icon">
-                            <svg viewBox="0 0 24 24">
-                                <polygon points="12,2 22,20 2,20"/>
-                                <circle cx="12" cy="14" r="3"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><polygon points="12,2 22,20 2,20"/><circle cx="12" cy="14" r="3"/></svg>
                         </div>
                         <h3 class="card-headline">"Lợi thế khác biệt cho người xứng tầm"</h3>
                         <p class="card-subline">Ưu thế và cơ hội không dành cho số đông dành cho giới thượng lưu</p>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="tagline-card animate-in delay-3" data-tagline="3">
+                <div class="tagline-card" data-tagline="3">
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">03</span>
                         <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
                         <div class="card-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 22v-8"/>
-                                <path d="M8 18c-2-2-2-6 4-10c6 4 6 8 4 10"/>
-                                <path d="M6 20c-3-2-3-8 6-14c9 6 9 12 6 14"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 22v-8"/><path d="M8 18c-2-2-2-6 4-10c6 4 6 8 4 10"/><path d="M6 20c-3-2-3-8 6-14c9 6 9 12 6 14"/></svg>
                         </div>
                         <h3 class="card-headline">"Giây phút vàng tạo nên di sản"</h3>
                         <p class="card-subline">Mỗi quyết định hôm nay là di sản mai sau khi có chuyên gia đáng tin cậy đồng hành</p>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="tagline-card animate-in delay-4" data-tagline="4">
+                <div class="tagline-card" data-tagline="4">
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">04</span>
                         <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
                         <div class="card-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M3 21h18"/>
-                                <path d="M5 21V7l7-4 7 4v14"/>
-                                <path d="M9 21v-6h6v6"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
                         </div>
                         <h3 class="card-headline">"Giá trị vững bền cho tương lai vững vàng"</h3>
                         <p class="card-subline">Giải pháp tài chính được thiết kế riêng nhằm gia tăng tài sản và bảo vệ gia đình bạn lâu dài</p>
@@ -871,47 +857,46 @@
                 </div>
             </div>
 
-            <!-- Continue Button -->
             <div class="continue-section" id="continue-section">
                 <button class="btn-continue" id="btn-continue">
                     <span>Tiếp tục</span>
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- ==================== PAGE 2: FEATURES SELECTION ==================== -->
+    <!-- ==================== PAGE 2: FEATURES ==================== -->
     <div id="features-page" class="page hidden">
-        <!-- Header -->
         <header class="features-header">
             <div class="features-header-inner">
                 <button class="btn-back" id="btn-back">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span>Quay lại</span>
                 </button>
-
                 <div class="selected-tagline-display">
                     <span class="tagline-text" id="selected-tagline-text"></span>
                 </div>
-
                 <span class="step-indicator">Bước 1 / 5</span>
             </div>
         </header>
 
-        <!-- Content -->
         <main class="features-content">
             <div class="features-intro">
                 <h2>Nhận biết & Cân nhắc</h2>
                 <p>Chọn những yếu tố quan trọng nhất với bạn khi lựa chọn dịch vụ quản lý tài sản</p>
             </div>
 
-            <div class="features-grid" id="features-grid">
-                <!-- Feature cards will be generated by JS -->
+            <!-- Main Feature Cards -->
+            <div class="main-features-grid" id="main-features-grid"></div>
+
+            <!-- Detail Features Section - Shows when a main feature is selected -->
+            <div class="detail-features-section" id="detail-features-section">
+                <div class="detail-section-header">
+                    <div class="detail-section-label">Tính năng chi tiết</div>
+                    <h3 class="detail-section-title" id="detail-section-title"></h3>
+                </div>
+                <div class="detail-features-grid" id="detail-features-grid"></div>
             </div>
 
             <div class="features-continue">
@@ -920,54 +905,14 @@
                 </div>
                 <button class="btn-features-continue" id="btn-next-step">
                     <span>Tiếp tục bước tiếp theo</span>
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
             </div>
         </main>
     </div>
 
     <script>
-        // Feature Data with Images
-        const featuresData = [
-            {
-                id: 1,
-                name: "Tôi thấy mình ở đây",
-                headline: "Dịch vụ được thiết kế cho những người như bạn",
-                statement: "Đây là dịch vụ dành cho những người giống tôi",
-                image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
-                details: [
-                    "Hiển thị các nhóm khách hàng cụ thể đang sử dụng dịch vụ (VD: chủ doanh nghiệp, quản lý cấp cao)",
-                    "Minh họa tình huống thực tế khi sử dụng sản phẩm/dịch vụ (VD: khi tài sản nhàn rỗi, khi thiếu thời gian quản lý)",
-                    "Ví dụ về cách các tính năng này sẽ được sử dụng trong các tình huống thực tế"
-                ]
-            },
-            {
-                id: 2,
-                name: "Uy tín",
-                headline: "Đội ngũ và thương hiệu đáng tin cậy",
-                statement: "Tôi cần tin vào thương hiệu và đội ngũ đứng sau dịch vụ này",
-                image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80",
-                details: [
-                    "Hiển thị thương hiệu tài chính đứng sau cùng chứng nhận hay giải thưởng",
-                    "Hiển thị ví dụ người đã sử dụng sản phẩm/dịch vụ",
-                    "Hiện thị thông tin về đội ngũ chuyên gia, quản lý gia sản (VD: năm kinh nghiệm, phong cách đầu tư)"
-                ]
-            },
-            {
-                id: 3,
-                name: "Giá trị và sinh lời",
-                headline: "Minh bạch về hiệu quả đầu tư",
-                statement: "Tôi muốn thấy tài sản của tôi sẽ sinh lời và quản lý tốt hơn như nào",
-                image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80",
-                details: [
-                    "Hiển thị minh họa trực quan về cách tài sản/dòng tiền được tối ưu khi dùng từng sản phẩm",
-                    "Hiển thị so sánh đơn giản giữa các sản phẩm và giữa có và không sử dụng dịch vụ"
-                ]
-            }
-        ];
-
+        // Data
         const taglineTexts = {
             1: '"Làm chủ từng khắc tận hưởng từng giây"',
             2: '"Lợi thế khác biệt cho người xứng tầm"',
@@ -975,9 +920,77 @@
             4: '"Giá trị vững bền cho tương lai vững vàng"'
         };
 
+        const mainFeaturesData = [
+            {
+                id: 1,
+                name: "Tôi thấy mình ở đây",
+                headline: "Dịch vụ được thiết kế cho những người như bạn",
+                statement: "Đây là dịch vụ dành cho những người giống tôi",
+                details: [
+                    {
+                        title: "Nhóm khách hàng",
+                        desc: "Hiển thị các nhóm khách hàng cụ thể đang sử dụng dịch vụ (VD: chủ doanh nghiệp, quản lý cấp cao)",
+                        image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"
+                    },
+                    {
+                        title: "Tình huống thực tế",
+                        desc: "Minh họa tình huống thực tế khi sử dụng sản phẩm/dịch vụ (VD: khi tài sản nhàn rỗi, khi thiếu thời gian quản lý)",
+                        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80"
+                    },
+                    {
+                        title: "Ví dụ ứng dụng",
+                        desc: "Ví dụ về cách các tính năng này sẽ được sử dụng trong các tình huống thực tế",
+                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: "Uy tín",
+                headline: "Đội ngũ và thương hiệu đáng tin cậy",
+                statement: "Tôi cần tin vào thương hiệu và đội ngũ đứng sau dịch vụ này",
+                details: [
+                    {
+                        title: "Chứng nhận & Giải thưởng",
+                        desc: "Hiển thị thương hiệu tài chính đứng sau cùng chứng nhận hay giải thưởng",
+                        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80"
+                    },
+                    {
+                        title: "Khách hàng tiêu biểu",
+                        desc: "Hiển thị ví dụ người đã sử dụng sản phẩm/dịch vụ",
+                        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
+                    },
+                    {
+                        title: "Đội ngũ chuyên gia",
+                        desc: "Hiện thị thông tin về đội ngũ chuyên gia, quản lý gia sản (VD: năm kinh nghiệm, phong cách đầu tư)",
+                        image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: "Giá trị và sinh lời",
+                headline: "Minh bạch về hiệu quả đầu tư",
+                statement: "Tôi muốn thấy tài sản của tôi sẽ sinh lời và quản lý tốt hơn như nào",
+                details: [
+                    {
+                        title: "Tối ưu tài sản",
+                        desc: "Hiển thị minh họa trực quan về cách tài sản/dòng tiền được tối ưu khi dùng từng sản phẩm",
+                        image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80"
+                    },
+                    {
+                        title: "So sánh sản phẩm",
+                        desc: "Hiển thị so sánh đơn giản giữa các sản phẩm và giữa có và không sử dụng dịch vụ",
+                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
+                    }
+                ]
+            }
+        ];
+
         // State
         let selectedTagline = null;
         let selectedFeatures = [];
+        let currentDetailFeature = null;
 
         // DOM Elements
         const taglinePage = document.getElementById('tagline-page');
@@ -986,11 +999,14 @@
         const continueSection = document.getElementById('continue-section');
         const btnContinue = document.getElementById('btn-continue');
         const btnBack = document.getElementById('btn-back');
-        const featuresGrid = document.getElementById('features-grid');
+        const mainFeaturesGrid = document.getElementById('main-features-grid');
+        const detailFeaturesSection = document.getElementById('detail-features-section');
+        const detailSectionTitle = document.getElementById('detail-section-title');
+        const detailFeaturesGrid = document.getElementById('detail-features-grid');
         const selectionSummary = document.getElementById('selection-summary');
         const selectedTaglineText = document.getElementById('selected-tagline-text');
 
-        // Tagline Card Selection
+        // Tagline Selection
         taglineCards.forEach(card => {
             card.addEventListener('click', () => {
                 taglineCards.forEach(c => c.classList.remove('selected'));
@@ -1009,7 +1025,7 @@
                 setTimeout(() => featuresPage.classList.add('active'), 50);
                 
                 selectedTaglineText.textContent = taglineTexts[selectedTagline];
-                renderFeatures();
+                renderMainFeatures();
             }
         });
 
@@ -1023,55 +1039,83 @@
             }, 300);
         });
 
-        // Render Feature Cards
-        function renderFeatures() {
-            featuresGrid.innerHTML = featuresData.map((feature, index) => `
-                <div class="feature-card animate-in delay-${index + 1}" data-feature-id="${feature.id}">
-                    <div class="feature-image">
-                        <img src="${feature.image}" alt="${feature.name}">
-                        <div class="feature-image-overlay"></div>
+        // Render Main Feature Cards
+        function renderMainFeatures() {
+            mainFeaturesGrid.innerHTML = mainFeaturesData.map(feature => `
+                <div class="main-feature-card" data-feature-id="${feature.id}">
+                    <div class="feature-card-header">
+                        <span class="feature-name">${feature.name}</span>
+                        <div class="feature-check">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
                     </div>
-                    <div class="feature-content">
-                        <div class="feature-name">
-                            <span>${feature.name}</span>
-                            <div class="feature-check">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3 class="feature-headline">${feature.headline}</h3>
-                        <div class="customer-statement">
-                            <p>"${feature.statement}"</p>
-                        </div>
-                        <div class="feature-details">
-                            <div class="details-divider"></div>
-                            <div class="details-label">Tính năng chi tiết</div>
-                            <ul class="details-list">
-                                ${feature.details.map(d => `<li>${d}</li>`).join('')}
-                            </ul>
-                        </div>
+                    <h3 class="feature-headline">${feature.headline}</h3>
+                    <div class="customer-statement">
+                        <p>"${feature.statement}"</p>
                     </div>
                 </div>
             `).join('');
 
             // Add click listeners
-            document.querySelectorAll('.feature-card').forEach(card => {
+            document.querySelectorAll('.main-feature-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const featureId = parseInt(card.dataset.featureId);
+                    const wasSelected = card.classList.contains('selected');
+                    
+                    // Toggle selection
                     card.classList.toggle('selected');
                     
                     if (card.classList.contains('selected')) {
                         if (!selectedFeatures.includes(featureId)) {
                             selectedFeatures.push(featureId);
                         }
+                        // Show details for this feature
+                        showDetailFeatures(featureId);
                     } else {
                         selectedFeatures = selectedFeatures.filter(id => id !== featureId);
+                        // Hide details if this was the one being shown
+                        if (currentDetailFeature === featureId) {
+                            hideDetailFeatures();
+                        }
                     }
                     
                     updateSummary();
                 });
             });
+        }
+
+        // Show Detail Features with Images
+        function showDetailFeatures(featureId) {
+            const feature = mainFeaturesData.find(f => f.id === featureId);
+            if (!feature) return;
+
+            currentDetailFeature = featureId;
+            detailSectionTitle.textContent = feature.name;
+            
+            detailFeaturesGrid.innerHTML = feature.details.map(detail => `
+                <div class="detail-feature-card">
+                    <div class="detail-feature-image">
+                        <img src="${detail.image}" alt="${detail.title}">
+                    </div>
+                    <div class="detail-feature-content">
+                        <h4 class="detail-feature-title">${detail.title}</h4>
+                        <p class="detail-feature-desc">${detail.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            detailFeaturesSection.classList.add('visible');
+            
+            // Scroll to detail section
+            setTimeout(() => {
+                detailFeaturesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Hide Detail Features
+        function hideDetailFeatures() {
+            currentDetailFeature = null;
+            detailFeaturesSection.classList.remove('visible');
         }
 
         // Update Selection Summary
@@ -1080,7 +1124,7 @@
                 selectionSummary.innerHTML = '<span class="summary-empty">Chọn ít nhất một tính năng để tiếp tục</span>';
             } else {
                 const tags = selectedFeatures.map(id => {
-                    const feature = featuresData.find(f => f.id === id);
+                    const feature = mainFeaturesData.find(f => f.id === id);
                     return `<span class="summary-tag">${feature.name}</span>`;
                 }).join('');
                 selectionSummary.innerHTML = tags;
