@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wealth Management | Private Banking</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -28,11 +27,7 @@
             --card-bg: #FDFCFA;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
@@ -44,26 +39,15 @@
             font-size: 15px;
         }
 
-        .serif {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-        }
-
-        /* Page Transitions */
         .page {
             min-height: 100vh;
             opacity: 0;
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .page.active { opacity: 1; }
+        .page.hidden { display: none; }
 
-        .page.active {
-            opacity: 1;
-        }
-
-        .page.hidden {
-            display: none;
-        }
-
-        /* ==================== TAGLINE SELECTION PAGE ==================== */
+        /* ==================== TAGLINE PAGE ==================== */
         #tagline-page {
             background: #000;
             position: relative;
@@ -72,15 +56,11 @@
 
         .hero-background {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: 
                 radial-gradient(ellipse at 30% 20%, rgba(184, 150, 92, 0.08) 0%, transparent 50%),
                 radial-gradient(ellipse at 70% 80%, rgba(184, 150, 92, 0.05) 0%, transparent 50%),
                 linear-gradient(180deg, #0a0a0a 0%, #000 100%);
-            z-index: 0;
         }
 
         .tagline-container {
@@ -91,11 +71,7 @@
             z-index: 10;
         }
 
-        /* Header */
-        .tagline-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+        .tagline-header { text-align: center; margin-bottom: 60px; }
 
         .brand-badge {
             display: inline-flex;
@@ -139,10 +115,8 @@
             font-weight: 300;
             max-width: 550px;
             margin: 0 auto;
-            line-height: 1.7;
         }
 
-        /* Tagline Cards Grid */
         .tagline-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -152,73 +126,46 @@
         }
 
         @media (max-width: 900px) {
-            .tagline-grid {
-                grid-template-columns: 1fr;
-            }
+            .tagline-grid { grid-template-columns: 1fr; }
         }
 
-        /* Tagline Card */
         .tagline-card {
             position: relative;
             height: 300px;
             cursor: pointer;
             overflow: hidden;
             border-radius: 16px;
-        }
-
-        .tagline-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            z-index: 3;
-            transition: border-color 0.4s ease;
+            transition: all 0.4s ease;
         }
 
-        .tagline-card:hover::before {
-            border-color: rgba(184, 150, 92, 0.4);
-        }
-
-        .tagline-card.selected::before {
-            border-color: var(--gold);
-            border-width: 2px;
-        }
+        .tagline-card:hover { border-color: rgba(184, 150, 92, 0.4); }
+        .tagline-card.selected { border-color: var(--gold); border-width: 2px; }
 
         .card-bg {
             position: absolute;
             inset: 0;
             background-size: cover;
             background-position: center;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 0;
+            transition: transform 0.7s ease;
         }
 
-        .tagline-card:hover .card-bg {
-            transform: scale(1.06);
-        }
+        .tagline-card:hover .card-bg { transform: scale(1.06); }
 
         .tagline-card[data-tagline="1"] .card-bg {
-            background: 
-                linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
                 url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80') center/cover;
         }
-
         .tagline-card[data-tagline="2"] .card-bg {
-            background: 
-                linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 100%),
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 100%),
                 url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80') center/cover;
         }
-
         .tagline-card[data-tagline="3"] .card-bg {
-            background: 
-                linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%),
                 url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80') center/cover;
         }
-
         .tagline-card[data-tagline="4"] .card-bg {
-            background: 
-                linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%),
+            background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%),
                 url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80') center/cover;
         }
 
@@ -240,7 +187,6 @@
             font-size: 48px;
             font-weight: 300;
             color: rgba(184, 150, 92, 0.25);
-            line-height: 1;
         }
 
         .card-icon {
@@ -255,9 +201,7 @@
             transition: all 0.3s ease;
         }
 
-        .tagline-card.selected .card-icon {
-            background: var(--gold);
-        }
+        .tagline-card.selected .card-icon { background: var(--gold); }
 
         .card-icon svg {
             width: 20px;
@@ -265,12 +209,9 @@
             stroke: var(--gold);
             stroke-width: 1.5;
             fill: none;
-            transition: stroke 0.3s ease;
         }
 
-        .tagline-card.selected .card-icon svg {
-            stroke: #000;
-        }
+        .tagline-card.selected .card-icon svg { stroke: #000; }
 
         .card-headline {
             font-family: 'Cormorant Garamond', serif;
@@ -278,7 +219,6 @@
             font-weight: 400;
             color: var(--white);
             margin-bottom: 12px;
-            line-height: 1.35;
         }
 
         .card-subline {
@@ -286,7 +226,6 @@
             font-size: 14px;
             font-weight: 300;
             line-height: 1.7;
-            max-width: 95%;
         }
 
         .card-check {
@@ -303,22 +242,12 @@
             opacity: 0;
             transform: scale(0.5);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(184, 150, 92, 0.4);
         }
 
-        .tagline-card.selected .card-check {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .tagline-card.selected .card-check { opacity: 1; transform: scale(1); }
 
-        .card-check svg {
-            width: 14px;
-            height: 14px;
-            stroke: #000;
-            stroke-width: 3;
-        }
+        .card-check svg { width: 14px; height: 14px; stroke: #000; stroke-width: 3; }
 
-        /* Continue Button */
         .continue-section {
             text-align: center;
             opacity: 0;
@@ -333,7 +262,7 @@
             pointer-events: all;
         }
 
-        .btn-continue {
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 12px;
@@ -351,26 +280,44 @@
             border-radius: 4px;
         }
 
-        .btn-continue:hover {
+        .btn-primary:hover {
             background: var(--gold-light);
             box-shadow: 0 8px 30px rgba(184, 150, 92, 0.35);
             transform: translateY(-2px);
         }
 
-        .btn-continue svg {
-            width: 18px;
-            height: 18px;
-            stroke: #000;
-            stroke-width: 2;
+        .btn-primary svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 48px;
+            background: var(--navy);
+            border: none;
+            color: var(--white);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
         }
 
-        /* ==================== FEATURES PAGE ==================== */
-        #features-page {
-            background: var(--cream);
-            min-height: 100vh;
+        .btn-secondary:hover {
+            background: var(--navy-light);
+            box-shadow: 0 8px 30px rgba(26, 43, 74, 0.3);
+            transform: translateY(-2px);
         }
 
-        .features-header {
+        .btn-secondary svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; }
+
+        /* ==================== JOURNEY PAGE ==================== */
+        #journey-page { background: var(--cream); min-height: 100vh; }
+
+        .journey-header {
             background: var(--navy-dark);
             padding: 20px 40px;
             position: sticky;
@@ -378,7 +325,7 @@
             z-index: 100;
         }
 
-        .features-header-inner {
+        .journey-header-inner {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
@@ -399,16 +346,8 @@
             transition: color 0.3s ease;
         }
 
-        .btn-back:hover {
-            color: var(--gold);
-        }
-
-        .btn-back svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-            stroke-width: 2;
-        }
+        .btn-back:hover { color: var(--gold); }
+        .btn-back svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; }
 
         .selected-tagline-display .tagline-text {
             font-family: 'Cormorant Garamond', serif;
@@ -423,19 +362,99 @@
             letter-spacing: 1px;
         }
 
-        /* Features Content */
-        .features-content {
+        /* Progress Bar */
+        .progress-bar-container {
+            background: var(--cream-dark);
+            position: sticky;
+            top: 68px;
+            z-index: 99;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--gold);
+            transition: width 0.5s ease;
+        }
+
+        .journey-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 60px 40px 80px;
         }
 
-        .features-intro {
-            text-align: center;
-            margin-bottom: 50px;
+        .step-section { animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .features-intro h2 {
+        .step-intro { text-align: center; margin-bottom: 50px; }
+
+        .step-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--cream-dark);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .timeline-step.active .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            box-shadow: 0 4px 15px rgba(184, 150, 92, 0.4);
+        }
+
+        .timeline-step.completed .timeline-dot {
+            background: var(--gold-light);
+        }
+
+        .timeline-line {
+            width: 40px;
+            height: 2px;
+            background: var(--cream-dark);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-line.completed {
+            background: var(--gold-light);
+        }
+
+        .timeline-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .timeline-step.active .timeline-label {
+            color: var(--gold-dark);
+        }
+
+        .timeline-step.completed .timeline-label {
+            color: var(--gold-light);
+        }
+
+        .step-intro h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 36px;
             font-weight: 400;
@@ -443,13 +462,14 @@
             margin-bottom: 12px;
         }
 
-        .features-intro p {
+        .step-intro p {
             color: var(--text-secondary);
             font-size: 15px;
             font-weight: 300;
+            font-style: italic;
         }
 
-        /* Main Feature Cards - 3 columns */
+        /* Main Feature Cards */
         .main-features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -457,23 +477,28 @@
             margin-bottom: 50px;
         }
 
-        @media (max-width: 1000px) {
-            .main-features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .main-features-grid.cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        @media (max-width: 700px) {
-            .main-features-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 1000px) { .main-features-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 700px) { 
+            .main-features-grid,
+            .main-features-grid.cols-2 { 
+                grid-template-columns: 1fr; 
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            } 
         }
 
-        /* Main Feature Card */
         .main-feature-card {
             background: var(--card-bg);
-            border-radius: 8px;
-            padding: 30px;
+            border-radius: 12px;
+            padding: 36px 32px;
             cursor: pointer;
             transition: all 0.4s ease;
             border: 1px solid var(--cream-dark);
@@ -484,45 +509,41 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 0;
-            bottom: 0;
+            top: 24px;
+            bottom: 24px;
             width: 3px;
             background: var(--gold);
+            border-radius: 0 2px 2px 0;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .main-feature-card:hover {
             box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
         }
 
-        .main-feature-card.selected {
-            border-color: var(--gold);
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(184, 150, 92, 0.05) 100%);
-        }
-
-        .main-feature-card.selected::before {
-            opacity: 1;
-        }
+        .main-feature-card.selected { border-color: var(--gold); }
+        .main-feature-card.selected::before { opacity: 1; }
 
         .feature-card-header {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .feature-name {
             color: var(--gold-dark);
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
         }
 
         .feature-check {
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             background: var(--gold);
             display: flex;
@@ -533,159 +554,148 @@
             transition: all 0.3s ease;
         }
 
-        .main-feature-card.selected .feature-check {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .feature-check svg {
-            width: 12px;
-            height: 12px;
-            stroke: var(--white);
-            stroke-width: 3;
-        }
+        .main-feature-card.selected .feature-check { opacity: 1; transform: scale(1); }
+        .feature-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 3; }
 
         .feature-headline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 400;
             color: var(--navy);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             line-height: 1.3;
         }
 
         .customer-statement {
             position: relative;
-            padding-left: 16px;
+            padding-left: 18px;
             border-left: 2px solid var(--gold-light);
         }
 
         .customer-statement p {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 17px;
+            font-size: 18px;
             font-style: italic;
             color: var(--text-secondary);
             line-height: 1.6;
         }
 
-        /* Detail Features Section - Appears when card is selected */
+        /* Detail Features Section */
         .detail-features-section {
-            margin-top: 40px;
-            padding-top: 40px;
+            margin-top: 50px;
+            padding-top: 50px;
             border-top: 1px solid var(--cream-dark);
             display: none;
         }
 
-        .detail-features-section.visible {
-            display: block;
-            animation: fadeInUp 0.5s ease forwards;
-        }
+        .detail-features-section.visible { display: block; animation: fadeIn 0.5s ease; }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .detail-section-header {
-            margin-bottom: 30px;
-        }
+        .detail-section-header { margin-bottom: 40px; }
 
         .detail-section-label {
             color: var(--gold-dark);
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .detail-section-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 400;
             color: var(--navy);
         }
 
-        /* Detail Feature Cards with Images */
-        .detail-features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+        .detail-features-grid { 
+            display: grid; 
+            gap: 28px; 
+        }
+        
+        .detail-features-grid.cols-3 { 
+            grid-template-columns: repeat(3, 1fr); 
+        }
+        
+        .detail-features-grid.cols-2 { 
+            grid-template-columns: repeat(2, 1fr); 
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         @media (max-width: 900px) {
-            .detail-features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .detail-features-grid.cols-3,
+            .detail-features-grid.cols-2 { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
         }
 
-        @media (max-width: 600px) {
-            .detail-features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Detail Feature Card - With Image */
         .detail-feature-card {
             background: var(--navy-dark);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             transition: all 0.4s ease;
         }
 
         .detail-feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
         }
 
-        .detail-feature-image {
-            position: relative;
-            height: 180px;
-            overflow: hidden;
-        }
+        .detail-feature-image { position: relative; height: 220px; overflow: hidden; }
+        .cols-2 .detail-feature-image { height: 260px; }
 
         .detail-feature-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
-        .detail-feature-card:hover .detail-feature-image img {
-            transform: scale(1.05);
+        .detail-feature-card:hover .detail-feature-image img { transform: scale(1.08); }
+
+        .detail-feature-content { padding: 32px; background: var(--navy-dark); }
+        .cols-2 .detail-feature-content { padding: 36px; }
+
+        .detail-feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(184, 150, 92, 0.3);
         }
 
-        .detail-feature-content {
-            padding: 24px;
+        .detail-feature-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--navy-dark);
+            stroke-width: 1.5;
+            fill: none;
         }
 
         .detail-feature-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 400;
-            color: var(--white);
-            margin-bottom: 12px;
-            line-height: 1.35;
+            color: var(--gold-light);
+            margin-bottom: 14px;
+            line-height: 1.3;
         }
 
         .detail-feature-desc {
-            color: rgba(255,255,255,0.65);
-            font-size: 14px;
+            color: rgba(255,255,255,0.75);
+            font-size: 15px;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
-        /* Continue Section */
-        .features-continue {
+        /* Navigation */
+        .step-navigation {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 40px;
+            margin-top: 70px;
+            padding-top: 50px;
             border-top: 1px solid var(--cream-dark);
         }
 
@@ -694,91 +704,139 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .summary-tag {
-            padding: 8px 16px;
+            padding: 10px 20px;
             background: var(--white);
-            border: 1px solid var(--cream-dark);
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--text-secondary);
+            border: 1px solid var(--gold-light);
+            border-radius: 25px;
+            font-size: 13px;
+            color: var(--gold-dark);
+            font-weight: 500;
         }
 
         .summary-empty {
             color: var(--text-light);
-            font-size: 13px;
+            font-size: 14px;
             font-style: italic;
         }
 
-        .btn-features-continue {
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-outline {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 48px;
-            background: var(--navy);
-            border: none;
-            color: var(--white);
+            gap: 10px;
+            padding: 16px 36px;
+            background: transparent;
+            border: 1px solid var(--cream-dark);
+            color: var(--text-secondary);
             font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 13px;
             font-weight: 500;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 4px;
         }
 
-        .btn-features-continue:hover {
-            background: var(--navy-light);
-            box-shadow: 0 8px 30px rgba(26, 43, 74, 0.3);
-            transform: translateY(-2px);
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold-dark);
         }
 
-        .btn-features-continue svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            stroke-width: 2;
+        .btn-outline svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; }
+
+        /* Completion */
+        .completion-section { text-align: center; padding: 80px 40px; }
+
+        .completion-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 40px;
+            box-shadow: 0 20px 50px rgba(184, 150, 92, 0.3);
         }
 
-        /* Responsive */
+        .completion-icon svg { width: 50px; height: 50px; stroke: var(--white); stroke-width: 2; }
+
+        .completion-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .completion-desc {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .all-selections {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: left;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid var(--cream-dark);
+        }
+
+        .selection-group { margin-bottom: 30px; }
+        .selection-group:last-child { margin-bottom: 0; }
+
+        .selection-group-title {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 12px;
+        }
+
+        .selection-group-items { display: flex; flex-wrap: wrap; gap: 10px; }
+
         @media (max-width: 768px) {
-            .tagline-container,
-            .features-content {
-                padding: 30px 20px;
+            .tagline-container, .journey-content { padding: 30px 20px; }
+            .tagline-card { height: 260px; }
+            .journey-header { padding: 15px 20px; }
+            .journey-header-inner { flex-wrap: wrap; gap: 10px; justify-content: center; }
+            .selected-tagline-display { order: -1; width: 100%; text-align: center; }
+            .main-feature-card { padding: 28px 24px; }
+            .nav-buttons { flex-direction: column; }
+            
+            .step-timeline { 
+                gap: 4px;
+                padding: 0 10px;
             }
-
-            .tagline-card {
-                height: 260px;
-            }
-
-            .features-header {
-                padding: 15px 20px;
-            }
-
-            .features-header-inner {
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-            }
-
-            .selected-tagline-display {
-                order: -1;
-                width: 100%;
-                text-align: center;
-            }
+            .timeline-line { width: 20px; }
+            .timeline-label { font-size: 8px; letter-spacing: 1px; }
+            .timeline-dot { width: 10px; height: 10px; }
+            .timeline-step.active .timeline-dot { width: 14px; height: 14px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== PAGE 1: TAGLINE SELECTION ==================== -->
+    <!-- PAGE 1: TAGLINE SELECTION -->
     <div id="tagline-page" class="page active">
         <div class="hero-background"></div>
-
         <div class="tagline-container">
             <header class="tagline-header">
                 <div class="brand-badge">
@@ -800,57 +858,38 @@
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">01</span>
-                        <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
-                        </div>
+                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></div>
                         <h3 class="card-headline">"Làm chủ từng khắc tận hưởng từng giây"</h3>
                         <p class="card-subline">Tiết kiệm thời gian tích sản, làm giàu từng khoảnh khắc sống</p>
                     </div>
                 </div>
-
                 <div class="tagline-card" data-tagline="2">
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">02</span>
-                        <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><polygon points="12,2 22,20 2,20"/><circle cx="12" cy="14" r="3"/></svg>
-                        </div>
+                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <div class="card-icon"><svg viewBox="0 0 24 24"><polygon points="12,2 22,20 2,20"/><circle cx="12" cy="14" r="3"/></svg></div>
                         <h3 class="card-headline">"Lợi thế khác biệt cho người xứng tầm"</h3>
                         <p class="card-subline">Ưu thế và cơ hội không dành cho số đông dành cho giới thượng lưu</p>
                     </div>
                 </div>
-
                 <div class="tagline-card" data-tagline="3">
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">03</span>
-                        <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 22v-8"/><path d="M8 18c-2-2-2-6 4-10c6 4 6 8 4 10"/><path d="M6 20c-3-2-3-8 6-14c9 6 9 12 6 14"/></svg>
-                        </div>
+                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22v-8"/><path d="M8 18c-2-2-2-6 4-10c6 4 6 8 4 10"/></svg></div>
                         <h3 class="card-headline">"Giây phút vàng tạo nên di sản"</h3>
                         <p class="card-subline">Mỗi quyết định hôm nay là di sản mai sau khi có chuyên gia đáng tin cậy đồng hành</p>
                     </div>
                 </div>
-
                 <div class="tagline-card" data-tagline="4">
                     <div class="card-bg"></div>
                     <div class="card-content">
                         <span class="card-number">04</span>
-                        <div class="card-check">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
-                        </div>
+                        <div class="card-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
                         <h3 class="card-headline">"Giá trị vững bền cho tương lai vững vàng"</h3>
                         <p class="card-subline">Giải pháp tài chính được thiết kế riêng nhằm gia tăng tài sản và bảo vệ gia đình bạn lâu dài</p>
                     </div>
@@ -858,7 +897,7 @@
             </div>
 
             <div class="continue-section" id="continue-section">
-                <button class="btn-continue" id="btn-continue">
+                <button class="btn-primary" id="btn-continue">
                     <span>Tiếp tục</span>
                     <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
@@ -866,10 +905,10 @@
         </div>
     </div>
 
-    <!-- ==================== PAGE 2: FEATURES ==================== -->
-    <div id="features-page" class="page hidden">
-        <header class="features-header">
-            <div class="features-header-inner">
+    <!-- PAGE 2: JOURNEY -->
+    <div id="journey-page" class="page hidden">
+        <header class="journey-header">
+            <div class="journey-header-inner">
                 <button class="btn-back" id="btn-back">
                     <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span>Quay lại</span>
@@ -877,42 +916,18 @@
                 <div class="selected-tagline-display">
                     <span class="tagline-text" id="selected-tagline-text"></span>
                 </div>
-                <span class="step-indicator">Bước 1 / 5</span>
+                <span class="step-indicator" id="step-indicator">Bước 1 / 5</span>
             </div>
         </header>
 
-        <main class="features-content">
-            <div class="features-intro">
-                <h2>Nhận biết & Cân nhắc</h2>
-                <p>Chọn những yếu tố quan trọng nhất với bạn khi lựa chọn dịch vụ quản lý tài sản</p>
-            </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar" style="width: 20%"></div>
+        </div>
 
-            <!-- Main Feature Cards -->
-            <div class="main-features-grid" id="main-features-grid"></div>
-
-            <!-- Detail Features Section - Shows when a main feature is selected -->
-            <div class="detail-features-section" id="detail-features-section">
-                <div class="detail-section-header">
-                    <div class="detail-section-label">Tính năng chi tiết</div>
-                    <h3 class="detail-section-title" id="detail-section-title"></h3>
-                </div>
-                <div class="detail-features-grid" id="detail-features-grid"></div>
-            </div>
-
-            <div class="features-continue">
-                <div class="selection-summary" id="selection-summary">
-                    <span class="summary-empty">Chọn ít nhất một tính năng để tiếp tục</span>
-                </div>
-                <button class="btn-features-continue" id="btn-next-step">
-                    <span>Tiếp tục bước tiếp theo</span>
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-            </div>
-        </main>
+        <main class="journey-content" id="journey-content"></main>
     </div>
 
     <script>
-        // Data
         const taglineTexts = {
             1: '"Làm chủ từng khắc tận hưởng từng giây"',
             2: '"Lợi thế khác biệt cho người xứng tầm"',
@@ -920,215 +935,359 @@
             4: '"Giá trị vững bền cho tương lai vững vàng"'
         };
 
-        const mainFeaturesData = [
+        const stepsData = [
             {
-                id: 1,
-                name: "Tôi thấy mình ở đây",
-                headline: "Dịch vụ được thiết kế cho những người như bạn",
-                statement: "Đây là dịch vụ dành cho những người giống tôi",
-                details: [
-                    {
-                        title: "Nhóm khách hàng",
-                        desc: "Hiển thị các nhóm khách hàng cụ thể đang sử dụng dịch vụ (VD: chủ doanh nghiệp, quản lý cấp cao)",
-                        image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"
+                id: 1, title: "Nhận biết & Cân nhắc",
+                description: "Chọn những yếu tố quan trọng nhất với bạn khi lựa chọn dịch vụ quản lý tài sản",
+                features: [
+                    { id: 1, name: "Tôi thấy mình ở đây", headline: "Dịch vụ được thiết kế cho những người như bạn", statement: "Đây là dịch vụ dành cho những người giống tôi",
+                        details: [
+                            { title: "Nhóm khách hàng", desc: "Hiển thị các nhóm khách hàng cụ thể đang sử dụng dịch vụ (VD: chủ doanh nghiệp, quản lý cấp cao)", image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80", icon: "users" },
+                            { title: "Tình huống thực tế", desc: "Minh họa tình huống thực tế khi sử dụng sản phẩm/dịch vụ (VD: khi tài sản nhàn rỗi, khi thiếu thời gian quản lý)", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80", icon: "lightbulb" },
+                            { title: "Ví dụ ứng dụng", desc: "Ví dụ về cách các tính năng này sẽ được sử dụng trong các tình huống thực tế", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80", icon: "chart" }
+                        ]
                     },
-                    {
-                        title: "Tình huống thực tế",
-                        desc: "Minh họa tình huống thực tế khi sử dụng sản phẩm/dịch vụ (VD: khi tài sản nhàn rỗi, khi thiếu thời gian quản lý)",
-                        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80"
+                    { id: 2, name: "Uy tín", headline: "Đội ngũ và thương hiệu đáng tin cậy", statement: "Tôi cần tin vào thương hiệu và đội ngũ đứng sau dịch vụ này",
+                        details: [
+                            { title: "Chứng nhận & Giải thưởng", desc: "Hiển thị thương hiệu tài chính đứng sau cùng chứng nhận hay giải thưởng", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80", icon: "award" },
+                            { title: "Khách hàng tiêu biểu", desc: "Hiển thị ví dụ người đã sử dụng sản phẩm/dịch vụ", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", icon: "star" },
+                            { title: "Đội ngũ chuyên gia", desc: "Hiện thị thông tin về đội ngũ chuyên gia, quản lý gia sản", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80", icon: "briefcase" }
+                        ]
                     },
-                    {
-                        title: "Ví dụ ứng dụng",
-                        desc: "Ví dụ về cách các tính năng này sẽ được sử dụng trong các tình huống thực tế",
-                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                    { id: 3, name: "Giá trị và sinh lời", headline: "Minh bạch về hiệu quả đầu tư", statement: "Tôi muốn thấy tài sản của tôi sẽ sinh lời và quản lý tốt hơn như nào",
+                        details: [
+                            { title: "Tối ưu tài sản", desc: "Hiển thị minh họa trực quan về cách tài sản/dòng tiền được tối ưu khi dùng từng sản phẩm", image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80", icon: "trending" },
+                            { title: "So sánh sản phẩm", desc: "Hiển thị so sánh đơn giản giữa các sản phẩm và giữa có và không sử dụng dịch vụ", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", icon: "compare" }
+                        ]
                     }
                 ]
             },
             {
-                id: 2,
-                name: "Uy tín",
-                headline: "Đội ngũ và thương hiệu đáng tin cậy",
-                statement: "Tôi cần tin vào thương hiệu và đội ngũ đứng sau dịch vụ này",
-                details: [
-                    {
-                        title: "Chứng nhận & Giải thưởng",
-                        desc: "Hiển thị thương hiệu tài chính đứng sau cùng chứng nhận hay giải thưởng",
-                        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80"
+                id: 2, title: "Bắt đầu & Làm quen",
+                description: "Quy trình đăng ký được thiết kế tối giản, tôn trọng thời gian của bạn",
+                features: [
+                    { id: 4, name: "Tự thao tác nhanh gọn", headline: "Hoàn tất đăng ký trong vài phút", statement: "Tôi muốn hoàn tất các bước cần thiết thật nhanh chóng và đơn giản",
+                        details: [
+                            { title: "Quy trình rút gọn", desc: "Quy trình đăng ký rút gọn, trực quan với các bước đơn giản", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80", icon: "zap" },
+                            { title: "Tự động điền thông tin", desc: "Tự động điền sẵn thông tin từ dữ liệu có sẵn", image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80", icon: "edit" }
+                        ]
                     },
-                    {
-                        title: "Khách hàng tiêu biểu",
-                        desc: "Hiển thị ví dụ người đã sử dụng sản phẩm/dịch vụ",
-                        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
+                    { id: 5, name: "Kết nối liền mạch", headline: "Liên kết tài khoản hiện có", statement: "Tôi muốn kết nối trực tiếp với ngân hàng để bắt đầu sử dụng ngay",
+                        details: [
+                            { title: "Kết nối ngân hàng", desc: "Kết nối trực tiếp với tài khoản ngân hàng hiện có", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80", icon: "link" },
+                            { title: "Đa nền tảng", desc: "Hỗ trợ kết nối nhiều ngân hàng/nền tảng phổ biến", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", icon: "grid" }
+                        ]
                     },
-                    {
-                        title: "Đội ngũ chuyên gia",
-                        desc: "Hiện thị thông tin về đội ngũ chuyên gia, quản lý gia sản (VD: năm kinh nghiệm, phong cách đầu tư)",
-                        image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+                    { id: 6, name: "Có nhân viên hỗ trợ", headline: "Đồng hành cùng bạn từ đầu", statement: "Tôi muốn có người hỗ trợ hoàn thiện thủ tục",
+                        details: [
+                            { title: "Hỗ trợ trực tuyến", desc: "Có kênh hỗ trợ trong quá trình đăng ký (chat, hotline)", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80", icon: "message" },
+                            { title: "Nhân viên tận nơi", desc: "Có nhân viên đăng ký tới nhà hỗ trợ", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80", icon: "home" }
+                        ]
                     }
                 ]
             },
             {
-                id: 3,
-                name: "Giá trị và sinh lời",
-                headline: "Minh bạch về hiệu quả đầu tư",
-                statement: "Tôi muốn thấy tài sản của tôi sẽ sinh lời và quản lý tốt hơn như nào",
-                details: [
-                    {
-                        title: "Tối ưu tài sản",
-                        desc: "Hiển thị minh họa trực quan về cách tài sản/dòng tiền được tối ưu khi dùng từng sản phẩm",
-                        image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80"
+                id: 3, title: "Tư vấn & Lựa chọn sản phẩm",
+                description: "Tự chủ tìm hiểu hoặc nhận tư vấn từ chuyên gia — theo cách bạn mong muốn",
+                features: [
+                    { id: 7, name: "Tự tìm hiểu với công nghệ", headline: "Công nghệ hỗ trợ quyết định", statement: "Tôi muốn tự tìm hiểu và ra quyết định với hỗ trợ của công nghệ",
+                        details: [
+                            { title: "Thiết lập mục tiêu", desc: "Thiết lập mục tiêu cuộc sống & tài chính và đưa ra chiến lược đầu tư", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80", icon: "target" },
+                            { title: "Danh mục mẫu từ CIO", desc: "Nhận định và danh mục mẫu từ CIO, gợi ý đầu tư cá nhân hóa", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", icon: "pieChart" }
+                        ]
                     },
-                    {
-                        title: "So sánh sản phẩm",
-                        desc: "Hiển thị so sánh đơn giản giữa các sản phẩm và giữa có và không sử dụng dịch vụ",
-                        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
+                    { id: 8, name: "Ra quyết định với chuyên gia", headline: "Chuyên gia đồng hành mọi quyết định", statement: "Tôi muốn được tham khảo ý kiến của chuyên gia",
+                        details: [
+                            { title: "Chuyên gia giàu kinh nghiệm", desc: "Chuyên gia tư vấn có dày dặn kinh nghiệm và thành tích thực chiến", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80", icon: "award" },
+                            { title: "Tư vấn toàn diện", desc: "Dịch vụ tư vấn toàn diện gia sản cá nhân và gia đình", image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80", icon: "users" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 4, title: "Sử dụng sản phẩm",
+                description: "Quản lý tài sản của bạn một cách chủ động và minh bạch",
+                features: [
+                    { id: 9, name: "Theo dõi danh mục", headline: "Nắm bắt hiệu suất đầu tư mọi lúc", statement: "Tôi muốn theo dõi danh mục đầu tư mọi lúc mọi nơi",
+                        details: [
+                            { title: "Dashboard trực quan", desc: "Giao diện theo dõi danh mục trực quan, dễ sử dụng", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", icon: "monitor" },
+                            { title: "Cảnh báo thông minh", desc: "Nhận thông báo khi có biến động quan trọng", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", icon: "bell" }
+                        ]
+                    },
+                    { id: 10, name: "Báo cáo định kỳ", headline: "Thông tin rõ ràng, đúng lúc", statement: "Tôi muốn nhận báo cáo định kỳ về tình hình tài sản",
+                        details: [
+                            { title: "Báo cáo chi tiết", desc: "Báo cáo định kỳ chi tiết về hiệu suất và phân bổ tài sản", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80", icon: "fileText" },
+                            { title: "Phân tích xu hướng", desc: "Phân tích xu hướng và dự báo để hỗ trợ quyết định", image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80", icon: "trendingUp" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 5, title: "Gắn kết",
+                description: "Mối quan hệ được xây dựng trên sự tin tưởng và cam kết bền vững",
+                features: [
+                    { id: 11, name: "Ưu đãi thành viên", headline: "Quyền lợi dành riêng cho bạn", statement: "Tôi muốn được hưởng những ưu đãi đặc biệt",
+                        details: [
+                            { title: "Phí ưu đãi", desc: "Mức phí ưu đãi đặc biệt dành cho khách hàng thân thiết", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80", icon: "percent" },
+                            { title: "Sự kiện VIP", desc: "Được mời tham gia các sự kiện độc quyền", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", icon: "calendar" }
+                        ]
+                    },
+                    { id: 12, name: "Cộng đồng khách hàng", headline: "Kết nối với người cùng tầm nhìn", statement: "Tôi muốn được kết nối với cộng đồng những nhà đầu tư",
+                        details: [
+                            { title: "Networking", desc: "Cơ hội kết nối với các nhà đầu tư và doanh nhân thành đạt", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", icon: "users" },
+                            { title: "Chia sẻ kiến thức", desc: "Tham gia các buổi chia sẻ kiến thức đầu tư từ chuyên gia", image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80", icon: "book" }
+                        ]
                     }
                 ]
             }
         ];
 
-        // State
+        const icons = {
+            users: '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+            lightbulb: '<svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.9V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.1A7 7 0 0 0 12 2z"/></svg>',
+            chart: '<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>',
+            award: '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>',
+            star: '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+            briefcase: '<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+            trending: '<svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+            compare: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>',
+            zap: '<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+            edit: '<svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
+            link: '<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+            grid: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+            message: '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+            home: '<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+            target: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+            pieChart: '<svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>',
+            monitor: '<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+            bell: '<svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>',
+            fileText: '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+            trendingUp: '<svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+            percent: '<svg viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>',
+            calendar: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+            book: '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+            check: '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+        };
+
         let selectedTagline = null;
-        let selectedFeatures = [];
+        let currentStep = 1;
+        let selections = { 1: [], 2: [], 3: [], 4: [], 5: [] };
         let currentDetailFeature = null;
 
-        // DOM Elements
         const taglinePage = document.getElementById('tagline-page');
-        const featuresPage = document.getElementById('features-page');
+        const journeyPage = document.getElementById('journey-page');
         const taglineCards = document.querySelectorAll('.tagline-card');
         const continueSection = document.getElementById('continue-section');
         const btnContinue = document.getElementById('btn-continue');
         const btnBack = document.getElementById('btn-back');
-        const mainFeaturesGrid = document.getElementById('main-features-grid');
-        const detailFeaturesSection = document.getElementById('detail-features-section');
-        const detailSectionTitle = document.getElementById('detail-section-title');
-        const detailFeaturesGrid = document.getElementById('detail-features-grid');
-        const selectionSummary = document.getElementById('selection-summary');
+        const journeyContent = document.getElementById('journey-content');
+        const stepIndicator = document.getElementById('step-indicator');
+        const progressBar = document.getElementById('progress-bar');
         const selectedTaglineText = document.getElementById('selected-tagline-text');
 
-        // Tagline Selection
         taglineCards.forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', function() {
                 taglineCards.forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                selectedTagline = card.dataset.tagline;
+                this.classList.add('selected');
+                selectedTagline = this.dataset.tagline;
                 continueSection.classList.add('visible');
             });
         });
 
-        // Continue to Features
-        btnContinue.addEventListener('click', () => {
+        btnContinue.addEventListener('click', function() {
             if (selectedTagline) {
                 taglinePage.classList.remove('active');
                 taglinePage.classList.add('hidden');
-                featuresPage.classList.remove('hidden');
-                setTimeout(() => featuresPage.classList.add('active'), 50);
-                
+                journeyPage.classList.remove('hidden');
+                setTimeout(() => journeyPage.classList.add('active'), 50);
                 selectedTaglineText.textContent = taglineTexts[selectedTagline];
-                renderMainFeatures();
+                renderStep(1);
             }
         });
 
-        // Back to Taglines
-        btnBack.addEventListener('click', () => {
-            featuresPage.classList.remove('active');
-            setTimeout(() => {
-                featuresPage.classList.add('hidden');
-                taglinePage.classList.remove('hidden');
-                setTimeout(() => taglinePage.classList.add('active'), 50);
-            }, 300);
+        btnBack.addEventListener('click', function() {
+            if (currentStep > 1) {
+                renderStep(currentStep - 1);
+            } else {
+                journeyPage.classList.remove('active');
+                setTimeout(() => {
+                    journeyPage.classList.add('hidden');
+                    taglinePage.classList.remove('hidden');
+                    setTimeout(() => taglinePage.classList.add('active'), 50);
+                }, 300);
+            }
         });
 
-        // Render Main Feature Cards
-        function renderMainFeatures() {
-            mainFeaturesGrid.innerHTML = mainFeaturesData.map(feature => `
-                <div class="main-feature-card" data-feature-id="${feature.id}">
-                    <div class="feature-card-header">
-                        <span class="feature-name">${feature.name}</span>
-                        <div class="feature-check">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        function renderStep(stepNum) {
+            currentStep = stepNum;
+            stepIndicator.textContent = `Bước ${stepNum} / 5`;
+            progressBar.style.width = `${stepNum * 20}%`;
+
+            if (stepNum > 5) {
+                renderCompletion();
+                return;
+            }
+
+            const step = stepsData[stepNum - 1];
+            const numFeatures = step.features.length;
+            const gridClass = numFeatures === 2 ? 'main-features-grid cols-2' : 'main-features-grid';
+            
+            journeyContent.innerHTML = `
+                <div class="step-section">
+                    <div class="step-intro">
+                        ${renderTimeline(stepNum)}
+                        <h2>${step.title}</h2>
+                        <p>${step.description}</p>
+                    </div>
+                    <div class="${gridClass}" id="features-grid">
+                        ${step.features.map(f => renderFeatureCard(f, stepNum)).join('')}
+                    </div>
+                    <div class="detail-features-section" id="detail-section">
+                        <div class="detail-section-header">
+                            <div class="detail-section-label">Tính năng chi tiết</div>
+                            <h3 class="detail-section-title" id="detail-title"></h3>
+                        </div>
+                        <div class="detail-features-grid" id="detail-grid"></div>
+                    </div>
+                    <div class="step-navigation">
+                        <div class="selection-summary" id="summary">${renderSummary(stepNum)}</div>
+                        <div class="nav-buttons">
+                            ${stepNum > 1 ? `<button class="btn-outline" onclick="renderStep(${stepNum - 1})"><svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Quay lại</span></button>` : ''}
+                            <button class="btn-secondary" onclick="goToNextStep()">
+                                <span>${stepNum === 5 ? 'Hoàn thành' : 'Tiếp tục bước tiếp theo'}</span>
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
                         </div>
                     </div>
-                    <h3 class="feature-headline">${feature.headline}</h3>
-                    <div class="customer-statement">
-                        <p>"${feature.statement}"</p>
-                    </div>
                 </div>
-            `).join('');
+            `;
 
-            // Add click listeners
-            document.querySelectorAll('.main-feature-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const featureId = parseInt(card.dataset.featureId);
-                    const wasSelected = card.classList.contains('selected');
+            document.querySelectorAll('#features-grid .main-feature-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const featureId = parseInt(this.dataset.featureId);
+                    this.classList.toggle('selected');
                     
-                    // Toggle selection
-                    card.classList.toggle('selected');
-                    
-                    if (card.classList.contains('selected')) {
-                        if (!selectedFeatures.includes(featureId)) {
-                            selectedFeatures.push(featureId);
-                        }
-                        // Show details for this feature
-                        showDetailFeatures(featureId);
+                    if (this.classList.contains('selected')) {
+                        if (!selections[stepNum].includes(featureId)) selections[stepNum].push(featureId);
+                        showDetailFeatures(stepNum, featureId);
                     } else {
-                        selectedFeatures = selectedFeatures.filter(id => id !== featureId);
-                        // Hide details if this was the one being shown
+                        selections[stepNum] = selections[stepNum].filter(id => id !== featureId);
                         if (currentDetailFeature === featureId) {
-                            hideDetailFeatures();
+                            if (selections[stepNum].length > 0) showDetailFeatures(stepNum, selections[stepNum][selections[stepNum].length - 1]);
+                            else document.getElementById('detail-section').classList.remove('visible');
                         }
                     }
-                    
-                    updateSummary();
+                    document.getElementById('summary').innerHTML = renderSummary(stepNum);
                 });
             });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Show Detail Features with Images
-        function showDetailFeatures(featureId) {
-            const feature = mainFeaturesData.find(f => f.id === featureId);
+        function renderFeatureCard(feature, stepNum) {
+            const isSelected = selections[stepNum].includes(feature.id);
+            return `
+                <div class="main-feature-card ${isSelected ? 'selected' : ''}" data-feature-id="${feature.id}">
+                    <div class="feature-card-header">
+                        <span class="feature-name">${feature.name}</span>
+                        <div class="feature-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    </div>
+                    <h3 class="feature-headline">${feature.headline}</h3>
+                    <div class="customer-statement"><p>"${feature.statement}"</p></div>
+                </div>
+            `;
+        }
+
+        function showDetailFeatures(stepNum, featureId) {
+            const step = stepsData[stepNum - 1];
+            const feature = step.features.find(f => f.id === featureId);
             if (!feature) return;
 
             currentDetailFeature = featureId;
-            detailSectionTitle.textContent = feature.name;
-            
-            detailFeaturesGrid.innerHTML = feature.details.map(detail => `
+            const numItems = feature.details.length;
+            let colsClass = numItems === 2 ? 'cols-2' : 'cols-3';
+
+            document.getElementById('detail-title').textContent = feature.name;
+            document.getElementById('detail-grid').className = 'detail-features-grid ' + colsClass;
+            document.getElementById('detail-grid').innerHTML = feature.details.map(d => `
                 <div class="detail-feature-card">
-                    <div class="detail-feature-image">
-                        <img src="${detail.image}" alt="${detail.title}">
-                    </div>
+                    <div class="detail-feature-image"><img src="${d.image}" alt="${d.title}" loading="lazy"></div>
                     <div class="detail-feature-content">
-                        <h4 class="detail-feature-title">${detail.title}</h4>
-                        <p class="detail-feature-desc">${detail.desc}</p>
+                        <div class="detail-feature-icon">${icons[d.icon]}</div>
+                        <h4 class="detail-feature-title">${d.title}</h4>
+                        <p class="detail-feature-desc">${d.desc}</p>
                     </div>
                 </div>
             `).join('');
 
-            detailFeaturesSection.classList.add('visible');
+            document.getElementById('detail-section').classList.add('visible');
+        }
+
+        function renderSummary(stepNum) {
+            if (selections[stepNum].length === 0) return '<span class="summary-empty">Chọn ít nhất một tính năng để tiếp tục</span>';
+            const step = stepsData[stepNum - 1];
+            return selections[stepNum].map(id => {
+                const feature = step.features.find(f => f.id === id);
+                return `<span class="summary-tag">${feature.name}</span>`;
+            }).join('');
+        }
+
+        function renderTimeline(currentStep) {
+            const steps = ['Nhận biết', 'Bắt đầu', 'Tư vấn', 'Sử dụng', 'Gắn kết'];
+            let html = '<div class="step-timeline">';
             
-            // Scroll to detail section
-            setTimeout(() => {
-                detailFeaturesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
-        }
-
-        // Hide Detail Features
-        function hideDetailFeatures() {
-            currentDetailFeature = null;
-            detailFeaturesSection.classList.remove('visible');
-        }
-
-        // Update Selection Summary
-        function updateSummary() {
-            if (selectedFeatures.length === 0) {
-                selectionSummary.innerHTML = '<span class="summary-empty">Chọn ít nhất một tính năng để tiếp tục</span>';
-            } else {
-                const tags = selectedFeatures.map(id => {
-                    const feature = mainFeaturesData.find(f => f.id === id);
-                    return `<span class="summary-tag">${feature.name}</span>`;
-                }).join('');
-                selectionSummary.innerHTML = tags;
+            for (let i = 0; i < 5; i++) {
+                const stepClass = i + 1 === currentStep ? 'active' : (i + 1 < currentStep ? 'completed' : '');
+                const lineClass = i + 1 < currentStep ? 'completed' : '';
+                
+                html += `
+                    <div class="timeline-step ${stepClass}">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-label">${steps[i]}</span>
+                    </div>
+                `;
+                
+                if (i < 4) {
+                    html += `<div class="timeline-line ${lineClass}"></div>`;
+                }
             }
+            
+            html += '</div>';
+            return html;
+        }
+
+        function goToNextStep() {
+            renderStep(currentStep + 1);
+        }
+
+        function renderCompletion() {
+            stepIndicator.textContent = 'Hoàn thành';
+            progressBar.style.width = '100%';
+
+            journeyContent.innerHTML = `
+                <div class="completion-section">
+                    <div class="completion-icon">${icons.check}</div>
+                    <h2 class="completion-title">Cảm ơn bạn đã hoàn thành!</h2>
+                    <p class="completion-desc">Chúng tôi đã ghi nhận các lựa chọn của bạn. Đội ngũ tư vấn sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+                    <div class="all-selections">
+                        ${stepsData.map((step, i) => `
+                            <div class="selection-group">
+                                <div class="selection-group-title">${step.title}</div>
+                                <div class="selection-group-items">
+                                    ${selections[i + 1].length > 0 ? selections[i + 1].map(id => {
+                                        const feature = step.features.find(f => f.id === id);
+                                        return `<span class="summary-tag">${feature.name}</span>`;
+                                    }).join('') : '<span class="summary-empty">Chưa chọn</span>'}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="btn-primary" onclick="location.reload()">
+                        <span>Bắt đầu lại</span>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M1 4v6h6M23 20v-6h-6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            `;
         }
     </script>
 </body>
