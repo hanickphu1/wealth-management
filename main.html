@@ -3,116 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WealthWise - Tài Khoản Số Đẹp | Privilege Banking</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <title>ACB Privilege Banking | Vị Thời Gian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --midnight: #0a1628;
+            --midnight-light: #1a2a4a;
+            --sapphire: #1a3a6e;
+            --gold: #d4af7d;
+            --gold-light: #e8c992;
+            --gold-dark: #b8960f;
+            --champagne: #f5f0e8;
+            --ivory: #fffef9;
+            --text-light: rgba(255,255,255,0.7);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        ::selection {
-            background: rgba(212, 175, 125, 0.3);
-            color: #f5f0e8;
-        }
-
         body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1a30 100%);
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            color: #f5f0e8;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--midnight);
+            color: var(--champagne);
             overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Decorative overlay */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(ellipse at 20% 20%, rgba(212, 175, 125, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 125, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Floating numbers */
-        .floating-numbers {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            pointer-events: none;
-            opacity: 0.04;
-            z-index: 0;
-        }
-
-        .floating-number {
-            position: absolute;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: #d4af7d;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.7; }
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Header */
         header {
-            padding: 24px 48px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            z-index: 10;
-            animation: fadeInDown 1s ease-out;
+            background: linear-gradient(180deg, rgba(10,22,40,0.95) 0%, transparent 100%);
+            transition: all 0.4s ease;
         }
 
         .logo {
@@ -122,32 +54,31 @@
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #1a3a6e 0%, #0d2244 100%);
-            border: 2px solid #d4af7d;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--sapphire) 0%, var(--midnight) 100%);
+            border: 1.5px solid var(--gold);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
 
-        .logo-icon span {
-            color: #d4af7d;
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
         .logo-icon::after {
             content: '';
             position: absolute;
-            top: -4px;
-            right: -4px;
+            top: -3px;
+            right: -3px;
             width: 8px;
             height: 8px;
-            background: #d4af7d;
+            background: var(--gold);
+        }
+
+        .logo-icon span {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--gold);
         }
 
         .logo-text {
@@ -156,18 +87,16 @@
         }
 
         .logo-text .brand {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            color: #f5f0e8;
-            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--champagne);
         }
 
         .logo-text .tagline {
             font-size: 9px;
-            letter-spacing: 3px;
-            color: #d4af7d;
-            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            color: var(--gold);
             margin-top: 2px;
         }
 
@@ -177,529 +106,924 @@
         }
 
         nav a {
-            color: #c9c0b0;
+            color: var(--text-light);
             text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
             font-size: 12px;
-            letter-spacing: 2px;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #d4af7d;
+            color: var(--gold);
         }
 
-        /* Main Content */
-        main {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: calc(100vh - 100px);
-            padding: 0 48px;
-            align-items: center;
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             position: relative;
-            z-index: 5;
-        }
-
-        .content-left {
-            padding-right: 60px;
-        }
-
-        .subtitle {
-            font-size: 11px;
-            letter-spacing: 6px;
-            color: #d4af7d;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            animation: fadeInUp 1.2s ease-out 0.3s both;
+            overflow: hidden;
         }
 
-        .subtitle::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #d4af7d);
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(135deg, rgba(10,22,40,0.85) 0%, rgba(26,58,110,0.7) 50%, rgba(10,22,40,0.9) 100%),
+                url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1920&q=80') center/cover;
         }
 
-        h1 {
-            font-size: 58px;
+        /* Floating golden numbers */
+        .floating-numbers {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .number {
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold);
+            opacity: 0.08;
+            animation: floatNumber 15s ease-in-out infinite;
+        }
+
+        @keyframes floatNumber {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-left {
+            animation: fadeInLeft 1.2s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            padding: 10px 24px;
+            background: rgba(212, 175, 125, 0.1);
+            border: 1px solid rgba(212, 175, 125, 0.3);
+            border-radius: 50px;
+        }
+
+        .hero-badge span {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
             font-weight: 400;
             line-height: 1.15;
-            margin: 0 0 32px 0;
-            font-family: 'Playfair Display', serif;
-            animation: fadeInUp 1.2s ease-out 0.4s both;
+            margin-bottom: 24px;
         }
 
-        h1 .highlight {
-            color: #d4af7d;
+        .hero-title .highlight {
+            display: block;
             font-style: italic;
-            position: relative;
+            background: linear-gradient(120deg, var(--gold) 20%, var(--gold-light) 40%, #fff0c4 50%, var(--gold-light) 60%, var(--gold) 80%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 6s linear infinite;
         }
 
-        h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8'%3E%3Cpath d='M0,4 Q50,8 100,4 T200,4' stroke='%23d4af7d' stroke-width='1' fill='none' opacity='0.5'/%3E%3C/svg%3E") no-repeat;
-            background-size: contain;
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
-        h1 .muted {
-            color: #c9c0b0;
-        }
-
-        .description {
-            font-size: 18px;
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-light);
             line-height: 1.8;
-            color: #9a9082;
-            max-width: 500px;
-            margin-bottom: 48px;
-            animation: fadeInUp 1.2s ease-out 0.5s both;
+            max-width: 480px;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
-        /* Features */
-        .features {
-            animation: fadeInUp 1.2s ease-out 0.6s both;
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 50px;
         }
 
         .feature-item {
-            padding: 20px 24px;
-            margin-bottom: 12px;
-            border-left: 2px solid transparent;
-            transition: all 0.5s ease;
-            cursor: pointer;
-        }
-
-        .feature-item.active,
-        .feature-item:hover {
-            background: linear-gradient(90deg, rgba(212, 175, 125, 0.12) 0%, transparent 100%);
-            border-left-color: #d4af7d;
-        }
-
-        .feature-item h3 {
-            font-size: 16px;
-            font-weight: 500;
-            color: #7a7062;
-            margin: 0 0 8px 0;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-            transition: color 0.5s ease;
-        }
-
-        .feature-item.active h3,
-        .feature-item:hover h3 {
-            color: #f5f0e8;
-        }
-
-        .feature-item p {
-            font-size: 14px;
-            color: #5a5248;
-            margin: 0;
-            transition: color 0.5s ease;
-        }
-
-        .feature-item.active p,
-        .feature-item:hover p {
-            color: #9a9082;
-        }
-
-        /* CTA */
-        .cta-wrapper {
-            margin-top: 48px;
             display: flex;
             align-items: center;
-            gap: 24px;
-            animation: fadeInUp 1.2s ease-out 0.9s both;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            text-decoration: none;
-            background: linear-gradient(135deg, #d4af7d 0%, #c49a5c 100%);
-            border: none;
-            padding: 18px 48px;
-            color: #0a1628;
-            font-size: 12px;
-            letter-spacing: 3px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+            gap: 16px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.03);
+            border-left: 2px solid var(--gold);
+            transition: all 0.4s ease;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(212, 175, 125, 0.3);
+        .feature-item:hover {
+            background: rgba(212, 175, 125, 0.1);
+            transform: translateX(10px);
         }
 
-        .cta-phone {
-            color: #7a7062;
-            font-size: 13px;
-            font-style: italic;
-        }
-
-        /* Right Side - Visual */
-        .content-right {
-            position: relative;
-            height: 100%;
+        .feature-item .icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: fadeInRight 1.5s ease-out 0.5s both;
+            flex-shrink: 0;
         }
 
-        .circle-decoration {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(212, 175, 125, 0.15);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 4s ease-in-out infinite;
+        .feature-item .icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--midnight);
+            stroke-width: 2;
+            fill: none;
         }
 
-        .circle-decoration.large {
-            width: 500px;
-            height: 500px;
+        .feature-item .text h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--champagne);
+            margin-bottom: 4px;
         }
 
-        .circle-decoration.small {
-            width: 400px;
-            height: 400px;
-            border-color: rgba(212, 175, 125, 0.1);
-            animation-delay: 0.5s;
+        .feature-item .text p {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 300;
         }
 
-        .knight-wrapper {
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--midnight);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 125, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 125, 0.4);
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--midnight);
+            stroke-width: 2;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(5px);
+        }
+
+        .btn-secondary {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            color: var(--gold-light);
+        }
+
+        /* Hero Right - Image */
+        .hero-right {
             position: relative;
-            z-index: 2;
+            animation: fadeInRight 1.2s ease-out 0.3s both;
         }
 
-        .knight-svg {
-            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.5));
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Badge */
-        .time-badge {
+        .hero-image-container {
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 20px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+        }
+
+        .image-overlay {
             position: absolute;
-            bottom: 80px;
-            right: 40px;
-            background: rgba(10, 22, 40, 0.9);
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(10,22,40,0.8) 100%);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .image-badge {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(10,22,40,0.9);
             border: 1px solid rgba(212, 175, 125, 0.3);
             padding: 20px 28px;
             backdrop-filter: blur(10px);
         }
 
-        .time-badge .label {
+        .image-badge .label {
             font-size: 10px;
-            letter-spacing: 3px;
-            color: #d4af7d;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 8px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 6px;
         }
 
-        .time-badge .value {
-            font-size: 24px;
-            color: #f5f0e8;
+        .image-badge .value {
             font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--champagne);
+        }
+
+        .decorative-frame {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            border-top: 1px solid rgba(212, 175, 125, 0.4);
+            border-right: 1px solid rgba(212, 175, 125, 0.4);
+        }
+
+        .decorative-frame-bottom {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border-bottom: 1px solid rgba(212, 175, 125, 0.4);
+            border-left: 1px solid rgba(212, 175, 125, 0.4);
+        }
+
+        /* Privileges Section */
+        .privileges {
+            padding: 120px 60px;
+            background: linear-gradient(180deg, var(--midnight) 0%, var(--midnight-light) 50%, var(--midnight) 100%);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 400;
+            color: var(--champagne);
+        }
+
+        .section-title span {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .privileges-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .privilege-card {
+            position: relative;
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .privilege-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .privilege-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .privilege-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .privilege-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(10,22,40,0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+        }
+
+        .privilege-card .tag {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .privilege-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--champagne);
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .privilege-card p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Large card */
+        .privilege-card.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        .privilege-card.large h3 {
+            font-size: 32px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 60px;
+            background: var(--midnight);
+        }
+
+        .services-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .services-image {
+            position: relative;
+        }
+
+        .services-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+        }
+
+        .services-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            font-weight: 400;
+            color: var(--champagne);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .services-text h2 span {
+            color: var(--gold);
             font-style: italic;
         }
 
-        /* Corner decorations */
-        .corner-decoration {
+        .services-text .desc {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 125, 0.1);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .service-item:hover {
+            background: rgba(212, 175, 125, 0.05);
+            border-color: rgba(212, 175, 125, 0.3);
+        }
+
+        .service-item .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--gold);
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .service-item .content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--champagne);
+            margin-bottom: 8px;
+        }
+
+        .service-item .content p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            padding: 100px 60px;
+            background: linear-gradient(135deg, var(--sapphire) 0%, var(--midnight) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-cta::before {
+            content: '';
             position: absolute;
-            width: 60px;
-            height: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 125, 0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        .corner-decoration.top-right {
-            top: 60px;
-            right: 20px;
-            border-top: 1px solid rgba(212, 175, 125, 0.3);
-            border-right: 1px solid rgba(212, 175, 125, 0.3);
+        .footer-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            font-weight: 400;
+            color: var(--champagne);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        .corner-decoration.bottom-left {
-            bottom: 60px;
-            left: 20px;
-            border-bottom: 1px solid rgba(212, 175, 125, 0.3);
-            border-left: 1px solid rgba(212, 175, 125, 0.3);
+        .footer-cta p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-cta .btn-primary {
+            position: relative;
+            z-index: 1;
         }
 
         /* Footer */
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(180deg, transparent 0%, rgba(10, 22, 40, 0.95) 100%);
+            padding: 40px 60px;
+            background: var(--midnight);
+            border-top: 1px solid rgba(212, 175, 125, 0.1);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 48px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #5a5248;
-            z-index: 10;
         }
 
-        footer .divider {
-            color: #d4af7d;
+        footer .copyright {
+            font-size: 12px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        footer .links {
+            display: flex;
+            gap: 30px;
+        }
+
+        footer .links a {
+            font-size: 11px;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        footer .links a:hover {
+            color: var(--gold);
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            main {
+        @media (max-width: 1200px) {
+            .privileges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .privilege-card.large {
+                grid-column: span 2;
+                grid-row: span 1;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
                 grid-template-columns: 1fr;
-                padding: 40px 24px;
-            }
-
-            .content-left {
-                padding-right: 0;
                 text-align: center;
+                gap: 60px;
             }
-
-            .subtitle {
-                justify-content: center;
+            .hero-left {
+                order: 2;
             }
-
-            h1 {
-                font-size: 42px;
+            .hero-right {
+                order: 1;
             }
-
-            .description {
+            .hero-subtitle {
                 margin-left: auto;
                 margin-right: auto;
             }
-
-            .features {
+            .hero-features {
                 max-width: 500px;
-                margin: 0 auto;
+                margin-left: auto;
+                margin-right: auto;
             }
-
-            .cta-wrapper {
+            .cta-group {
                 justify-content: center;
-                flex-wrap: wrap;
             }
-
-            .content-right {
-                display: none;
+            .services-content {
+                grid-template-columns: 1fr;
             }
-
+            header {
+                padding: 15px 30px;
+            }
             nav {
                 display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 38px;
+            }
+            .privileges-grid {
+                grid-template-columns: 1fr;
+            }
+            .privilege-card.large {
+                grid-column: span 1;
+            }
+            .privileges, .services, .footer-cta {
+                padding: 80px 30px;
+            }
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background overlay -->
-    <div class="bg-overlay"></div>
-
-    <!-- Floating numbers decoration -->
-    <div class="floating-numbers" id="floatingNumbers"></div>
-
     <!-- Header -->
     <header>
         <div class="logo">
             <div class="logo-icon">
-                <span>W</span>
+                <span>A</span>
             </div>
             <div class="logo-text">
-                <div class="brand">WEALTHWISE</div>
-                <div class="tagline">PRIVILEGE BANKING</div>
+                <span class="brand">ACB</span>
+                <span class="tagline">PRIVILEGE BANKING</span>
             </div>
         </div>
         <nav>
             <a href="#">Giới thiệu</a>
             <a href="#">Đặc quyền</a>
-            <a href="#">Đầu tư</a>
+            <a href="#">Dịch vụ</a>
             <a href="#">Liên hệ</a>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Left Content -->
-        <div class="content-left">
-            <div class="subtitle">TÀI KHOẢN SỐ ĐẸP</div>
-            
-            <h1>
-                Vị thế <span class="highlight">khác biệt</span><br>
-                cho người <span class="muted">xứng tầm</span>
-            </h1>
-
-            <p class="description">
-                Ưu thế và đặc quyền đầu tư dành riêng cho giới thượng lưu. 
-                Nơi mỗi quyết định tài chính đều được nâng tầm bởi sự tinh tế.
-            </p>
-
-            <!-- Features -->
-            <div class="features">
-                <div class="feature-item active" data-index="0">
-                    <h3>Ưu thế đầu tư độc quyền</h3>
-                    <p>Tiếp cận các cơ hội đầu tư được chọn lọc, dành riêng cho giới thượng lưu</p>
-                </div>
-                <div class="feature-item" data-index="1">
-                    <h3>Quản lý gia sản dài hạn</h3>
-                    <p>Chiến lược kiến tạo và bảo toàn tài sản xuyên thế hệ</p>
-                </div>
-                <div class="feature-item" data-index="2">
-                    <h3>Đồng hành kín đáo</h3>
-                    <p>Chuyên gia tư vấn riêng, đồng hành trong suốt hành trình đầu tư</p>
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="cta-wrapper">
-                <a href="index.html" class="cta-btn">KHÁM PHÁ NGAY</a>
-                <span class="cta-phone">hoặc gọi 1900 xxxx</span>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        
+        <!-- Floating Numbers -->
+        <div class="floating-numbers">
+            <span class="number" style="font-size: 180px; top: 10%; left: 5%; animation-delay: 0s;">8</span>
+            <span class="number" style="font-size: 120px; top: 60%; left: 15%; animation-delay: -3s;">6</span>
+            <span class="number" style="font-size: 200px; top: 20%; right: 10%; animation-delay: -6s;">8</span>
+            <span class="number" style="font-size: 150px; bottom: 15%; right: 20%; animation-delay: -9s;">6</span>
+            <span class="number" style="font-size: 100px; top: 40%; left: 40%; animation-delay: -12s;">8</span>
         </div>
 
-        <!-- Right Side - Chess Knight -->
-        <div class="content-right">
-            <!-- Decorative circles -->
-            <div class="circle-decoration large"></div>
-            <div class="circle-decoration small"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span>Tài khoản số đẹp</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Vị thế 
+                    <span class="highlight">khác biệt</span>
+                    cho người xứng tầm
+                </h1>
 
-            <!-- Chess Knight SVG -->
-            <div class="knight-wrapper">
-                <svg class="knight-svg" width="320" height="420" viewBox="0 0 320 420">
-                    <!-- Base shadow -->
-                    <ellipse cx="160" cy="400" rx="120" ry="15" fill="url(#baseGradient)" />
-                    
-                    <!-- Knight body -->
-                    <path d="
-                        M100,380 
-                        L100,320 
-                        Q90,280 100,240
-                        Q80,200 90,160
-                        Q70,140 80,100
-                        Q90,60 130,40
-                        Q150,30 180,40
-                        Q220,50 230,90
-                        Q240,120 220,160
-                        Q230,180 225,200
-                        Q240,220 230,260
-                        Q250,300 240,340
-                        L240,380
-                        Z
-                    " fill="url(#knightGradient)" />
-                    
-                    <!-- Knight mane -->
-                    <path d="
-                        M130,40
-                        Q120,80 130,120
-                        Q110,100 120,140
-                        Q100,130 115,170
-                        Q95,165 110,200
-                    " stroke="#1a3a6e" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.6"/>
-                    
-                    <!-- Eye -->
-                    <circle cx="185" cy="100" r="8" fill="#0a1628" />
-                    <circle cx="187" cy="98" r="3" fill="#d4af7d" opacity="0.6" />
-                    
-                    <!-- Nostril -->
-                    <ellipse cx="220" cy="140" rx="4" ry="6" fill="#0a1628" opacity="0.7" />
-                    
-                    <!-- Ear -->
-                    <path d="M150,35 Q165,15 180,35" stroke="url(#knightGradient)" stroke-width="12" fill="none" stroke-linecap="round"/>
-                    
-                    <!-- Shine highlight -->
-                    <path d="
-                        M140,80 
-                        Q160,100 150,150
-                        Q140,200 155,250
-                    " stroke="rgba(212,175,125,0.3)" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    
-                    <!-- Base platform -->
-                    <rect x="80" y="370" width="160" height="20" rx="2" fill="url(#baseGradient2)" />
-                    
-                    <!-- Gradients -->
-                    <defs>
-                        <linearGradient id="knightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#1a4080" />
-                            <stop offset="30%" stop-color="#0d2855" />
-                            <stop offset="70%" stop-color="#0a1f42" />
-                            <stop offset="100%" stop-color="#061530" />
-                        </linearGradient>
-                        <linearGradient id="baseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#0d2244" />
-                            <stop offset="100%" stop-color="#061530" />
-                        </linearGradient>
-                        <linearGradient id="baseGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#1a3a6e" />
-                            <stop offset="100%" stop-color="#0d2244" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+                <p class="hero-subtitle">
+                    Ưu thế và đặc quyền đầu tư dành riêng cho giới thượng lưu. 
+                    Nơi mỗi quyết định tài chính đều được nâng tầm bởi sự tinh tế.
+                </p>
+
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="text">
+                            <h4>Quản lý gia sản dài hạn</h4>
+                            <p>Chiến lược kiến tạo và bảo toàn tài sản xuyên thế hệ</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="text">
+                            <h4>Đồng hành kín đáo</h4>
+                            <p>Chuyên gia tư vấn riêng trong suốt hành trình đầu tư</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="index.html" class="btn-primary">
+                        Khám phá ngay
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="tel:19001234" class="btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        1900 xxxx
+                    </a>
+                </div>
             </div>
 
-            <!-- Time badge -->
-            <div class="time-badge">
-                <div class="label">VỊ THỜI GIAN</div>
-                <div class="value">Since 1999</div>
+            <div class="hero-right">
+                <div class="hero-image-container">
+                    <div class="decorative-frame"></div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Professional businessman" class="hero-image">
+                    <div class="image-overlay"></div>
+                    <div class="image-badge">
+                        <div class="label">Vị Thời Gian</div>
+                        <div class="value">Since 1993</div>
+                    </div>
+                    <div class="decorative-frame-bottom"></div>
+                </div>
             </div>
-
-            <!-- Corner decorations -->
-            <div class="corner-decoration top-right"></div>
-            <div class="corner-decoration bottom-left"></div>
         </div>
-    </main>
+    </section>
+
+    <!-- Privileges Section -->
+    <section class="privileges">
+        <div class="section-header">
+            <div class="section-label">Đặc quyền riêng biệt</div>
+            <h2 class="section-title">Giây phút vàng tạo nên <span>di sản</span></h2>
+        </div>
+
+        <div class="privileges-grid">
+            <!-- Large Card -->
+            <div class="privilege-card large">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80" alt="Business meeting">
+                <div class="overlay">
+                    <span class="tag">Đặc quyền</span>
+                    <h3>Phòng chờ Thương gia</h3>
+                    <p>Giờ vàng khởi đầu hành trình đẳng cấp. Không gian riêng tư, dịch vụ tận tâm.</p>
+                </div>
+            </div>
+
+            <!-- Small Cards -->
+            <div class="privilege-card">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Relaxation">
+                <div class="overlay">
+                    <span class="tag">Đặc quyền</span>
+                    <h3>Khoảnh khắc đáng nhớ</h3>
+                    <p>Giờ vàng tái tạo năng lượng</p>
+                </div>
+            </div>
+
+            <div class="privilege-card">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="Health">
+                <div class="overlay">
+                    <span class="tag">Đặc quyền</span>
+                    <h3>Sức khỏe toàn diện</h3>
+                    <p>Chăm sóc sức khỏe VIP</p>
+                </div>
+            </div>
+
+            <div class="privilege-card">
+                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&q=80" alt="Family">
+                <div class="overlay">
+                    <span class="tag">Đặc quyền</span>
+                    <h3>Gia đình hạnh phúc</h3>
+                    <p>Bảo vệ tương lai thế hệ sau</p>
+                </div>
+            </div>
+
+            <div class="privilege-card">
+                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80" alt="Investment">
+                <div class="overlay">
+                    <span class="tag">Đặc quyền</span>
+                    <h3>Đầu tư thông minh</h3>
+                    <p>Chiến lược sinh lời bền vững</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="services-content">
+            <div class="services-image">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1000&q=80" alt="Professional advisor">
+            </div>
+            <div class="services-text">
+                <h2>Kiến tạo giá trị, <span>vững bền tương lai</span></h2>
+                <p class="desc">
+                    Giải pháp tài chính được thiết kế riêng nhằm gia tăng tài sản 
+                    và bảo vệ gia đình bạn lâu dài với sự đồng hành của đội ngũ chuyên gia hàng đầu.
+                </p>
+                <div class="service-list">
+                    <div class="service-item">
+                        <span class="num">01</span>
+                        <div class="content">
+                            <h4>Tư vấn đầu tư cá nhân hóa</h4>
+                            <p>Chiến lược đầu tư được thiết kế riêng dựa trên mục tiêu và khẩu vị rủi ro của bạn</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <span class="num">02</span>
+                        <div class="content">
+                            <h4>Quản lý gia sản toàn diện</h4>
+                            <p>Bảo toàn và phát triển tài sản gia đình qua nhiều thế hệ</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <span class="num">03</span>
+                        <div class="content">
+                            <h4>Dịch vụ concierge 24/7</h4>
+                            <p>Hỗ trợ mọi nhu cầu tài chính và phong cách sống đẳng cấp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2>Sẵn sàng nâng tầm trải nghiệm?</h2>
+        <p>Đăng ký ngay để nhận tư vấn từ chuyên gia ACB Privilege</p>
+        <a href="index.html" class="btn-primary">
+            Bắt đầu hành trình
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <span>© 2025 WEALTHWISE</span>
-        <span class="divider">|</span>
-        <span>PRIVILEGE BANKING</span>
-        <span class="divider">|</span>
-        <span>ĐIỀU KHOẢN SỬ DỤNG</span>
+        <div class="copyright">© 2025 ACB Privilege Banking. All rights reserved.</div>
+        <div class="links">
+            <a href="#">Điều khoản sử dụng</a>
+            <a href="#">Chính sách bảo mật</a>
+            <a href="#">Liên hệ</a>
+        </div>
     </footer>
 
     <script>
-        // Generate floating numbers
-        const floatingNumbers = document.getElementById('floatingNumbers');
-        for (let i = 0; i < 12; i++) {
-            const span = document.createElement('span');
-            span.className = 'floating-number';
-            span.textContent = Math.floor(Math.random() * 10);
-            span.style.fontSize = `${80 + Math.random() * 120}px`;
-            span.style.top = `${Math.random() * 100}%`;
-            span.style.left = `${Math.random() * 100}%`;
-            span.style.transform = `rotate(${-15 + Math.random() * 30}deg)`;
-            span.style.animationDuration = `${8 + Math.random() * 4}s`;
-            span.style.animationDelay = `${Math.random() * 2}s`;
-            floatingNumbers.appendChild(span);
-        }
-
-        // Feature items interaction
-        const featureItems = document.querySelectorAll('.feature-item');
-        let activeIndex = 0;
-
-        function setActiveFeature(index) {
-            featureItems.forEach((item, i) => {
-                item.classList.toggle('active', i === index);
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
-            activeIndex = index;
-        }
-
-        featureItems.forEach((item, index) => {
-            item.addEventListener('click', () => setActiveFeature(index));
         });
 
-        // Auto-rotate features
-        setInterval(() => {
-            activeIndex = (activeIndex + 1) % featureItems.length;
-            setActiveFeature(activeIndex);
-        }, 4000);
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 22, 40, 0.98)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'linear-gradient(180deg, rgba(10,22,40,0.95) 0%, transparent 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.privilege-card, .service-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
